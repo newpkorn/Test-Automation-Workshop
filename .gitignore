@@ -1,0 +1,15 @@
+.env
+
+# Ignore .png files
+*.png
+
+# Ignore specific files
+log.html
+report.html
+output.xml
+
+.DS_Store
+
+__pycache__/
+
+venv/
