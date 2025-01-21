@@ -100,10 +100,9 @@ Check Total Price
     Element Text Should Be    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
 
 Proceed to Payment
-    Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}
-    Click Element    ${LOCATOR_BTN_CONTINUE_PAYMENT}
-    # Execute JavaScript
-    # ...    document.querySelector("button#continue-payment-btn").click();
+    # Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}
+    # Click Element    ${LOCATOR_BTN_CONTINUE_PAYMENT}
+    Execute JavaScript    document.querySelector("a.btn-proceed").click();
 
     ################## temp logic ##################
     Wait Until Page Contains    สามารถเข้าใช้งานด้วยบัญชีเดียวกับ 7 App    10s
@@ -126,8 +125,7 @@ Select Delivery Method by Entering Store Code
     Wait Until Element Is Visible    ${LOCATOR_STORE_DETAIL}    10s
 
     # continue payment
-    Click Element    ${LOCATOR_BTN_CONTINUE_PAYMENT}
-    # Execute JavaScript    document.querySelector("button#continue-payment-btn").click();
+    Execute JavaScript    document.querySelector("button#continue-payment-btn").click();
     Wait Until Page Contains    วิธีการชำระเงิน
 
 Pay with Cash at 7-Eleven
@@ -241,8 +239,8 @@ Order Details
     ...    ชญานิศา วงศ์ภักดี เบอร์โทรติดต่อ : 0895678912 45/89 พระโขนง, คลองตัน คลองเตย กรุงเทพมหานคร 10110
 
 Login
-    ${u}    Get Env Variable    USER
-    ${p}    Get Env Variable    PASSWORD
+    ${u}    Get Env Variable    username
+    ${p}    Get Env Variable    password
     Wait Until Element Is Visible    name=email    10s
     Input Text    name=email    ${u}
     Input Password    name=password    ${p}
