@@ -91,13 +91,22 @@ Check Product Details
     ...    ${Quantity_Expected}
     ...    ${xpath_Price}
     ...    ${Price_Expected}
-    Element Should Contain    ${xpath_Name}    ${Product_Name}
-    Element Attribute Value Should Be    ${xpath_Quantity}    value    ${Quantity_Expected}
-    Element Text Should Be    ${xpath_Price}    ${Price_Expected}
+    Element Should Contain
+    ...    ${xpath_Name}    ${Product_Name}
+
+    Element Attribute Value Should Be
+    ...    ${xpath_Quantity}    value    ${Quantity_Expected}
+
+    Element Text Should Be
+    ...    ${xpath_Price}    ${Price_Expected}
 
 Check Total Price
-    [Arguments]    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
-    Element Text Should Be    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
+    [Arguments]
+    ...    ${xpath_TotalPrice}
+    ...    ${Expected_TotalPrice}
+    Element Text Should Be
+    ...    ${xpath_TotalPrice}
+    ...    ${Expected_TotalPrice}
 
 Proceed to Payment
     # Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}
@@ -184,20 +193,20 @@ Order Summary
     Element Text Should Be    ${xpath_Price}    ${Price_Expected}
 
 Total Price
-    [Arguments]    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
-    Element Text Should Be    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
+    [Arguments]    ${xpath_TotalPrice}    ${Expected_TotalPrice}
+    Element Text Should Be    ${xpath_TotalPrice}    ${Expected_TotalPrice}
 
 Shipping Fee
-    [Arguments]    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
-    Element Text Should Be    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
+    [Arguments]    ${xpath_TotalPrice}    ${Expected_TotalPrice}
+    Element Text Should Be    ${xpath_TotalPrice}    ${Expected_TotalPrice}
 
 Net Total
-    [Arguments]    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
-    Element Text Should Be    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
+    [Arguments]    ${xpath_TotalPrice}    ${Expected_TotalPrice}
+    Element Text Should Be    ${xpath_TotalPrice}    ${Expected_TotalPrice}
 
 Earn All Member Points
-    [Arguments]    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
-    Element Text Should Be    ${xpath_ราคารวม}    ${ราคารวมที่คาดหวัง}
+    [Arguments]    ${xpath_TotalPrice}    ${Expected_TotalPrice}
+    Element Text Should Be    ${xpath_TotalPrice}    ${Expected_TotalPrice}
 
 # รายละเอียดการจัดส่ง
     # Element Should Contain    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/div    ภากร สร้อยคำ
