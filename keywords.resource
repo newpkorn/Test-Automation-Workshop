@@ -151,7 +151,7 @@ Fill Shipping Address
 
     # wait id='conf-dif-addr' visible
     # Scroll Element Into View    ${LOCATOR_BTN_SELECT_ADDR}
-    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_ADDR}    10s
+    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_ADDR}    20s
     Click Element    ${LOCATOR_BTN_SELECT_ADDR}
 
     # wait button continue payment visible and enabled
