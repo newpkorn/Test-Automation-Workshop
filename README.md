@@ -6,14 +6,14 @@ This script is used to test ordering products on the website **[AllOnline 7Eleve
 
 ### 📋 **Test Data**
 
-> **Note:**  
-> Product pricing may change. Please check the information on the website prior to the test.
-
 #### 🛍️ **Selected Products**
 
 1. **AMARIT คอลลาเจน 30 แคปซูล** (1 ชิ้น)
 2. **แอคเน่-เอด ลิควิด 100 มล.** (1 ชิ้น)
 3. **มาลี น้ำส้มแมนดาริน 100% 1,000 มล.** (1 ชิ้น)
+
+> **Note:**  
+> Product pricing may change. Please check the information on the website prior to the test.
 
 #### 🚚 **Shipping Address**
 
@@ -72,7 +72,7 @@ This script is used to test ordering products on the website **[AllOnline 7Eleve
 
 #### **ยอดสุทธิ**: 467.00
 
-#### **Aรับ All member Point**: 123
+#### **รับ All member Point**: 123
 
 ---
 
