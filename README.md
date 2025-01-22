@@ -99,3 +99,6 @@ make test_with_chrome
 ```env
 make test_with_headlesschrome
 ```
+
+> **Note:**  
+> Please ensure that the version of ChromeDriver installed on your machine matches the version of the Chrome browser.
