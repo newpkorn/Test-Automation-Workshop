@@ -9,28 +9,28 @@ Suite Teardown      Close All Browsers
 Select Products
     [Template]    Search and Select Products
     # Product Name    -->    Expected Product Name
-    AMARIT คอลลาเจน 30 แคปซูล    AMARIT คอลลาเจน 30 แคปซูล
-    แอคเน่-เอด ลิควิด 100 มล.    แอคเน่-เอด ลิควิด 100 มล.
-    มาลี น้ำส้มแมนดาริน 100% 1,000 มล.    มาลี น้ำส้มแมนดาริน 100% 1,000 มล.
+    ${PRODUCT_ITEM_1}    AMARIT คอลลาเจน 30 แคปซูล
+    ${PRODUCT_ITEM_2}    แอคเน่-เอด ลิควิด 100 มล.
+    ${PRODUCT_ITEM_3}    มาลี น้ำส้มแมนดาริน 100% 1,000 มล.
 
 Review Cart and Proceed to Checkout
     Open Shopping Cart
     Review and Checkout    # Locator    -->    Expected Product (Name, Quantity, Price)
-    ...    ${LOCATOR_PRODUCT_NAME_ITEM_1}    AMARIT คอลลาเจน 30 แคปซูล
-    ...    ${LOCATOR_PRODUCT_QTY_ITEM_1}    1
-    ...    ${LOCATOR_PRODUCT_PRICE_ITEM_1}    ฿ 149
+    ...    ${LOCATOR_PRODUCT_NAME_ITEM_1}    ${PRODUCT_ITEM_1}
+    ...    ${LOCATOR_PRODUCT_QTY_ITEM_1}    ${PRODUCT_QTY}
+    ...    ${LOCATOR_PRODUCT_PRICE_ITEM_1}    ${PRODUCT_PRICE_ITEM_1}
 
     Review and Checkout    # Locator    -->    Expected Product (Name, Quantity, Price)
-    ...    ${LOCATOR_PRODUCT_NAME_ITEM_2}    แอคเน่-เอด ลิควิด 100 มล.
-    ...    ${LOCATOR_PRODUCT_QTY_ITEM_2}    1
-    ...    ${LOCATOR_PRODUCT_PRICE_ITEM_2}    ฿ 169
+    ...    ${LOCATOR_PRODUCT_NAME_ITEM_2}    ${PRODUCT_ITEM_2}
+    ...    ${LOCATOR_PRODUCT_QTY_ITEM_2}    ${PRODUCT_QTY}
+    ...    ${LOCATOR_PRODUCT_PRICE_ITEM_2}    ${PRODUCT_PRICE_ITEM_2}
     Review and Checkout    # Locator    -->    Expected Product (Name, Quantity, Price)
-    ...    ${LOCATOR_PRODUCT_NAME_ITEM_3}    มาลี น้ำส้มแมนดาริน 100% 1,000 มล.
-    ...    ${LOCATOR_PRODUCT_QTY_ITEM_3}    1
-    ...    ${LOCATOR_PRODUCT_PRICE_ITEM_3}    ฿ 149
+    ...    ${LOCATOR_PRODUCT_NAME_ITEM_3}    ${PRODUCT_ITEM_3}
+    ...    ${LOCATOR_PRODUCT_QTY_ITEM_3}    ${PRODUCT_QTY}
+    ...    ${LOCATOR_PRODUCT_PRICE_ITEM_3}    ${PRODUCT_PRICE_ITEM_3}
 
     Check Total Price    # Locator    -->    Expected Total Price
-    ...    ${LOCATOR_TOTAL_PRICE}    ฿ 467
+    ...    ${LOCATOR_TOTAL_PRICE}    ${TOTAL_PRICE}
 
     Proceed to Payment
 

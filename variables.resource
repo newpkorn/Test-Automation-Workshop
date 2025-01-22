@@ -8,17 +8,17 @@ ${PRODUCT_ITEM_1}                                       AMARIT คอลลา�
 ${PRODUCT_ITEM_2}                                       แอคเน่-เอด ลิควิด 100 มล.
 ${PRODUCT_ITEM_3}                                       มาลี น้ำส้มแมนดาริน 100% 1,000 มล.
 
-${PRODUCT_PRICE_ITEM_1}                                 ฿ 149
+${PRODUCT_PRICE_ITEM_1}                                 ฿ 119
 ${PRODUCT_PRICE_ITEM_2}                                 ฿ 169
 ${PRODUCT_PRICE_ITEM_3}                                 ฿ 149
 
 ${PRODUCT_QTY}                                          1
 
-${TOTAL_PRICE}                                          ฿ 467
+${TOTAL_PRICE}                                          ฿ 437
 ${SHIPPING_FEE}                                         ฿ 50
-${NET_TOTAL}                                            ฿ 517
+${NET_TOTAL}                                            ฿ 487
 
-${ALL_MEMBER_POINTS}                                    138
+${ALL_MEMBER_POINTS}                                    129
 #####################################################################################
 
 # Element Locators

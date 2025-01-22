@@ -87,6 +87,9 @@ password=your_password
 
 Save the file after adding your email and password.
 
+> **Note:**  
+> Please use your **Existing AllOnline account credentials**. If you don't have an account, then register first.
+
 ### 🚀 **Run Test Script**
 
 You can run the test script using the following command:
