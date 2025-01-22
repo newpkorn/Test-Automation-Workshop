@@ -1,5 +1,3 @@
-# Automated-Test-Bootcamp-2025/workshop_group3
-
 # 🛒 **Automated Test Script for Ordering Products on [AllOnline 7Eleven](https://www.allonline.7eleven.co.th/)**
 
 This script is used to test ordering products through the website **[AllOnline 7Eleven](https://www.allonline.7eleven.co.th/)**.
@@ -92,8 +90,12 @@ You can run the test script using the following command:
 
 **For Chrome**:
 
-- **make test_with_chrome**
+```env
+make test_with_chrome
+```
 
 **For Headless Chrome (Not currently working due to 403 error)**:
 
-- **make test_with_headlesschrome**
+```env
+make test_with_headlesschrome
+```
