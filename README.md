@@ -1,6 +1,6 @@
-# 🛒 **Automated Test Script for Ordering Products on [AllOnline 7Eleven](https://www.allonline.7eleven.co.th/)**
+# 🛒 **Automated Test Script**
 
-This script is used to test ordering products through the website **[AllOnline 7Eleven](https://www.allonline.7eleven.co.th/)**.
+This script is used to test ordering products on the website **[AllOnline 7Eleven](https://www.allonline.7eleven.co.th/)**.
 
 ---
 
