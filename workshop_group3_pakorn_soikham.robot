@@ -34,8 +34,21 @@ Review Cart and Proceed to Checkout
 
     Proceed to Payment
 
-Select Delivery Method    # Store Code    -->    ที่ร้านเซเว่นอีเลฟเว่น #18527 สาขา PTTOR พระราม 4-พระโขนงเลขที่ ถ.พระรามที่4, 3767/1, แขวงพระโขนง เขตคลองเตย กรุงเทพฯ 10110
-    Select Delivery Method by Entering Store Code    18527
+Select Delivery Method
+    # Store Code    -->    ที่ร้านเซเว่นอีเลฟเว่น #18527 สาขา PTTOR พระราม 4-พระโขนงเลขที่ ถ.พระรามที่4, 3767/1, แขวงพระโขนง เขตคลองเตย กรุงเทพฯ 10110
+    Enter Store Code
+    ...    18527
+
+    Fill Shipping Address
+    ...    ชญานิศา
+    ...    วงศ์ภักดี
+    ...    0895678912
+    ...    45/89
+    ...    พระโขนง
+    ...    กรุงเทพมหานคร
+    ...    คลองเตย
+    ...    คลองเตย
+    ...    10110
 
 Cash Payment at 7-Eleven Completed
     Pay with Cash at 7-Eleven

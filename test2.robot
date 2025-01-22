@@ -34,7 +34,45 @@ Review Cart and Proceed to Checkout
     Proceed to Payment
 
 Select Delivery Method
-    Select Delivery Method by Entering Store Code    18527
+    Enter Store Code    18527
 
 Cash Payment at 7-Eleven Completed
     Pay with Cash at 7-Eleven
+
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="title">
+    <div>ระบุที่อยู่จัดส่ง</div>
+    <button type="button" class="btn-close">x</button>
+    </div>
+    <div id="pac-container">
+    <div class="pac-search">
+    <span class="glyphicon glyphicon-icon-search"></span>
+    <input id="pac-input" type="text" autocomplete="off" placeholder="ค้นหาที่อยู่จัดส่ง">
+    </div>
+    <ul id="map-prediction"></ul>
+    </div>
+    <div id="popup">
+    <div id="formatted-location">168 ประชาร่วมใจ 57 แขวงทรายกองดินใต้ เขตคลองสามวา กรุงเทพมหานคร 10510 ประเทศไทย</div>
+    <div id="nearby-position">กรุณาเลือกตำแหน่งที่ใกล้เคียงที่สุด</div>
+    <div id="selected-location" class="selected-locate" style="pointer-events: auto;">เลือกที่อยู่</div>
+    </div>
+    .....
+    <div id="map-footer">
+    <div></div>
+    </div>
+    </div>
+
+    <div class="cf-def-locate">
+    <div class="title">
+    ข้อมูลที่อยู่ไม่ตรงกัน</div>
+    <div class="content">
+    <img loading="lazy" src="/assets/base/images/map/chart.svg">
+    <p class="hightlight">ตำแหน่งที่คุณเลือกจากแผนที่</p>
+    <p class="hightlight">ไม่ตรงกับที่อยู่ที่กรอกไว้</p>
+    <p>กรุณาระบุตำแหน่งที่อยู่อีกครั้ง</p>
+    <div class="def-btn">
+    <div id="conf-dif-addr" class="def-btn-sty conf-addr"> ยืนยันตามที่อยู่ที่กรอกไว้</div>
+    <div id="conf-def-re" class="def-btn-sty re-select">ระบุตำแหน่งใหม่</div>
+    </div>
+    </div>
+    </div>

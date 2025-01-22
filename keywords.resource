@@ -5,36 +5,54 @@ Library     String
 
 
 *** Variables ***
-${URL}                              https://www.allonline.7eleven.co.th/
-${BROWSER}                          chrome
-${LOCATOR_SEARCH}                   name=q
-${LOCATOR_PRODUCT_ITEM}             xpath=//*[@id="page"]/div[2]/div[2]/div/div/div[2]/div/div/div/div/div/div[3]/div[1]/div/a[1]/div/img
-${LOCATOR_BTN_ADD_TO_CART}          xpath=//*[@id="article-form"]/div[2]/div[2]/div[4]/div[1]/button
-${LOCATOR_PHONE_NUMBER_INPUT}       id=second-phone-shipping
-${LOCATOR_STORE_FINDER}             xpath=//*[@id="storefinder-selector-group"]/div[2]/div
-${LOCATOR_STORE_NUMBER_INPUT}       id=user-storenumber-input
-${LOCATOR_BTN_CHK_STORE_NUMBER}     id=btn-check-storenumber
-${LOCATOR_STORE_DETAIL}             xpath=//*[@id="store"]/div[2]/div/div[4]/div[3]/div/div/div[2]/span/span
-${LOCATOR_BTN_CONTINUE_PAYMENT}     id=continue-payment-btn
-${LOCATOR_PAYMENT_OPTION_TAB}       xpath=//*[@id="payment-options"]/div[3]/button
+${URL}                                                  https://www.allonline.7eleven.co.th/
+${BROWSER}                                              chrome
+${LOCATOR_SEARCH}                                       name=q
+${LOCATOR_PRODUCT_ITEM}                                 xpath=//*[@id="page"]/div[2]/div[2]/div/div/div[2]/div/div/div/div/div/div[3]/div[1]/div/a[1]/div/img
+${LOCATOR_BTN_ADD_TO_CART}                              xpath=//*[@id="article-form"]/div[2]/div[2]/div[4]/div[1]/button
+${LOCATOR_PHONE_NUMBER_INPUT}                           id=second-phone-shipping
+${LOCATOR_STORE_FINDER}                                 xpath=//*[@id="storefinder-selector-group"]/div[2]/div
+${LOCATOR_STORE_NUMBER_INPUT}                           id=user-storenumber-input
+${LOCATOR_BTN_CHK_STORE_NUMBER}                         id=btn-check-storenumber
+${LOCATOR_STORE_DETAIL}                                 xpath=//*[@id="store"]/div[2]/div/div[4]/div[3]/div/div/div[2]/span/span
+${LOCATOR_INPUT_LOCATION_FIELD}                         xpath=/html/body/span/span/span[1]/input
+${LOCATOR_BTN_CONTINUE_PAYMENT}                         id=continue-payment-btn
+${LOCATOR_PAYMENT_OPTION_TAB}                           xpath=//*[@id="payment-options"]/div[3]/button
 
-${LOCATOR_PRODUCT_NAME_ITEM_1}      xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[2]/a
-${LOCATOR_PRODUCT_NAME_ITEM_2}      xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[2]/a
-${LOCATOR_PRODUCT_NAME_ITEM_3}      xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[2]/a
+${LOCATOR_PRODUCT_NAME_ITEM_1}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[2]/a
+${LOCATOR_PRODUCT_NAME_ITEM_2}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[2]/a
+${LOCATOR_PRODUCT_NAME_ITEM_3}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[2]/a
 
-${LOCATOR_PRODUCT_QTY_ITEM_1}       xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[5]/div/div/input
-${LOCATOR_PRODUCT_QTY_ITEM_2}       xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[5]/div/div/input
-${LOCATOR_PRODUCT_QTY_ITEM_3}       xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[5]/div/div/input
+${LOCATOR_PRODUCT_QTY_ITEM_1}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[5]/div/div/input
+${LOCATOR_PRODUCT_QTY_ITEM_2}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[5]/div/div/input
+${LOCATOR_PRODUCT_QTY_ITEM_3}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[5]/div/div/input
 
-${LOCATOR_PRODUCT_PRICE_ITEM_1}     xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[4]/span[2]
-${LOCATOR_PRODUCT_PRICE_ITEM_2}     xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[4]/span[2]
-${LOCATOR_PRODUCT_PRICE_ITEM_3}     xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[4]/span[2]
+${LOCATOR_PRODUCT_PRICE_ITEM_1}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[4]/span[2]
+${LOCATOR_PRODUCT_PRICE_ITEM_2}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[4]/span[2]
+${LOCATOR_PRODUCT_PRICE_ITEM_3}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[4]/span[2]
 
-${LOCATOR_TOTAL_PRICE}              xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[9]/div/div[2]/span[1]
+${LOCATOR_TOTAL_PRICE}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[9]/div/div[2]/span[1]
+
+# Shipping Address Locators
+${LOCATOR_NEW_ADDRESS}                                  xpath=//*[@id="address"]/div[1]/div[2]
+${LOCATOR_CUSTOMER_NAME}                                id=new-address-name
+${LOCATOR_CUSTOMER_LASTNAME}                            id=new-address-lastname
+${LOCATOR_CUSTOMER_PHONE_NUMBER}                        id=new-address-mobile
+${LOCATOR_CUSTOMER_ADDRESS_NUMBER}                      id=new-address-addrno
+${LOCATOR_CUSTOMER_ADDRESS_SOI}                         id=new-address-soi
+${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_PROVINCE}           id=select2-new-address-province-container
+${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_DISTRICT}           id=select2-new-address-district-container
+${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_SUB_DISTRICT}       id=select2-new-address-sub-district-container
+${LOCATOR_CUSTOMER_ADDRESS_POSTAL_CODE}                 id=new-address-postal-code
+
+${LOCATOR_CUSTOMER_PROVINCE}                            id=new-address-province
+${LOCATOR_CUSTOMER_DISTRICT}                            id=new-address-district
+${LOCATOR_CUSTOMER_SUB_DISTRICT}                        id=new-address-sub-district
 
 
 *** Keywords ***
 Open Web Browser
+    # Set Selenium Speed    0.5
     Open Browser    url=${URL}    browser=${BROWSER}
     Maximize Browser Window
 
@@ -109,7 +127,6 @@ Check Total Price
     ...    ${Expected_TotalPrice}
 
 Proceed to Payment
-    # Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}
     # Click Element    ${LOCATOR_BTN_CONTINUE_PAYMENT}
     Execute JavaScript    document.querySelector("a.btn-proceed").click();
 
@@ -122,22 +139,133 @@ Proceed to Payment
     Wait Until Element Is Visible    ${LOCATOR_PHONE_NUMBER_INPUT}
     Input Text    ${LOCATOR_PHONE_NUMBER_INPUT}    0895678912
 
-Select Delivery Method by Entering Store Code
-    [Arguments]    ${branch_id}
+    # continue payment
+    # Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}
+    Execute JavaScript    document.querySelector("button#continue-payment-btn").click();
+    Wait Until Page Contains    วิธีการชำระเงิน
+
+Enter Store Code
+    [Arguments]    ${store_id}
     Click Element    ${LOCATOR_STORE_FINDER}
     # store id
     Wait Until Element Is Visible    ${LOCATOR_STORE_NUMBER_INPUT}
-    Input Text    ${LOCATOR_STORE_NUMBER_INPUT}    ${branch_id}
+    Input Text    ${LOCATOR_STORE_NUMBER_INPUT}    ${store_id}
     Click Element    ${LOCATOR_BTN_CHK_STORE_NUMBER}
 
     # store detail
     Wait Until Element Is Visible    ${LOCATOR_STORE_DETAIL}    10s
 
-    # continue payment
-    Execute JavaScript    document.querySelector("button#continue-payment-btn").click();
-    Wait Until Page Contains    วิธีการชำระเงิน
+# Shipping Address
+#    [Arguments]
+#    # Locator Text Fields    -->    Data Test
+#    ...    ${locator_fname}    ${customer_fname}
+#    ...    ${locator_lname}    ${customer_lname}
+#    ...    ${locator_phone}    ${customer_phone}
+#    ...    ${locator_address_no}    ${customer_address_no}
+#    ...    ${locator_address_soi}    ${customer_address_soi}
+#    ...    ${locator_province}    ${customer_province}
+#    ...    ${locator_district}    ${customer_district}
+#    ...    ${locator_sub_district}    ${customer_sub_district}
+#    ...    ${customer_postal_code}
+
+#    Enter Shipping Address
+#    # Locator Text Fields    -->    Data Test
+#    ...    ${locator_fname}    ${customer_fname}
+#    ...    ${locator_lname}    ${customer_lname}
+#    ...    ${locator_phone}    ${customer_phone}
+#    ...    ${locator_address_no}    ${customer_address_no}
+#    ...    ${locator_address_soi}    ${customer_address_soi}
+#    ...    ${locator_province}    ${customer_province}
+#    ...    ${locator_district}    ${customer_district}
+#    ...    ${locator_sub_district}    ${customer_sub_district}
+#    ...    ${customer_postal_code}
+
+# Enter Shipping Address
+#    [Arguments]
+#    # Locator Text Fields    -->    Data Test
+#    ...    ${locator_fname}    ${customer_fname}
+#    ...    ${locator_lname}    ${customer_lname}
+#    ...    ${locator_phone}    ${customer_phone}
+#    ...    ${locator_address_no}    ${customer_address_no}
+#    ...    ${locator_address_soi}    ${customer_address_soi}
+#    ...    ${locator_province}    ${customer_province}
+#    ...    ${locator_district}    ${customer_district}
+#    ...    ${locator_sub_district}    ${customer_sub_district}
+#    ...    ${customer_postal_code}
+
+#    Input Text    ${locator_fname}    ${customer_fname}
+#    Input Text    ${locator_lname}    ${customer_lname}
+#    Input Text    ${locator_phone}    ${customer_phone}
+#    Input Text    ${locator_address_no}    ${customer_address_no}
+#    Input Text    ${locator_address_soi}    ${customer_address_soi}
+
+#    Select From List By Label    ${locator_province}    ${customer_province}
+#    Select From List By Label    ${locator_district}    ${customer_district}
+#    Select From List By Label    ${locator_sub_district}    ${customer_sub_district}
+
+#    # Check postal code
+#    ${postal_code}    Get Text    ${LOCATOR_CUSTOMER_ADDRESS_POSTAL_CODE}
+#    Should Be Equal As Strings    ${postal_code}    ${customer_postal_code}
+
+Fill Shipping Address
+    [Arguments]
+    ...    ${name}
+    ...    ${lastname}
+    ...    ${phone}
+    ...    ${addr_no}
+    ...    ${soi}
+    ...    ${province}
+    ...    ${district}
+    ...    ${sub_district}
+    ...    ${postal_code}
+
+    # กดจัดส่งตามที่อยู่
+    Click Element    xpath=//*[@id="address-tabs"]/ul/li[2]/a
+    Wait Until Element Is Visible    ${LOCATOR_NEW_ADDRESS}
+    Click Element    ${LOCATOR_NEW_ADDRESS}
+
+    Wait Until Element Is Visible    ${LOCATOR_CUSTOMER_NAME}
+    Input Text    ${LOCATOR_CUSTOMER_NAME}    ${name}
+    Input Text    ${LOCATOR_CUSTOMER_LASTNAME}    ${lastname}
+    Input Text    ${LOCATOR_CUSTOMER_PHONE_NUMBER}    ${phone}
+    Input Text    ${LOCATOR_CUSTOMER_ADDRESS_NUMBER}    ${addr_no}
+    Input Text    ${LOCATOR_CUSTOMER_ADDRESS_SOI}    ${soi}
+
+    Click Element    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_PROVINCE}
+    # Select From List By Label    ${LOCATOR_CUSTOMER_PROVINCE}    ${province}
+    Input Text    ${LOCATOR_INPUT_LOCATION_FIELD}    ${province}
+    Press Enter
+
+    Click Element    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_DISTRICT}
+    # Select From List By Label    ${LOCATOR_CUSTOMER_DISTRICT}    ${district}
+    Input Text    ${LOCATOR_INPUT_LOCATION_FIELD}    ${district}
+    Press Enter
+
+    Click Element    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_SUB_DISTRICT}
+    # Select From List By Label    ${LOCATOR_CUSTOMER_SUB_DISTRICT}    ${sub_district}
+    Input Text    ${LOCATOR_INPUT_LOCATION_FIELD}    ${sub_district}
+    Press Enter
+
+    # selected-location
+    Scroll Element Into View    id=selected-location
+    Wait Until Element Is Visible    id=selected-location    timeout=10s
+    Click Element    id=selected-location
+
+    # wait id='conf-dif-addr' visible
+    Wait Until Element Is Visible    id=conf-dif-addr    timeout=10s
+    Wait Until Element Is Enabled    id=conf-dif-addr    timeout=10s
+    Click Element    id=conf-dif-addr
+
+    # wait button continue payment visible and enabled
+    Wait Until Element Is Visible    ${LOCATOR_BTN_CONTINUE_PAYMENT}    timeout=10s
+    Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}    timeout=10s
+
+    # click continue payment
+    # Click Element    ${LOCATOR_BTN_CONTINUE_PAYMENT}
+    Execute JavaScript    document.getElementById("continue-payment-btn").click()
 
 Pay with Cash at 7-Eleven
+    Wait Until Page Contains    วิธีการชำระเงิน
     Wait Until Element Is Visible    ${LOCATOR_PAYMENT_OPTION_TAB}    10s
     Click Element    ${LOCATOR_PAYMENT_OPTION_TAB}
     Product Details
@@ -172,10 +300,10 @@ Product Details
     ...    ฿ 467
     Shipping Fee
     ...    xpath=//*[@id="js-invoice-details-tbody"]/tr[2]/td[2]/b
-    ...    ฟรี
+    ...    ฿ 50
     Net Total
     ...    id=totalAmount
-    ...    ฿ 467
+    ...    ฿ 517
     Earn All Member Points
     ...    xpath=//*[@id="js-invoice-details-tbody"]/tr[17]/td[2]/b
     ...    138
