@@ -6,6 +6,9 @@ This script is used to test ordering products on the website **[AllOnline 7Eleve
 
 ### 📋 **Test Data**
 
+> **Note:**  
+> Product pricing may change. Please check the information on the website prior to the test.
+
 #### 🛍️ **Selected Products**
 
 1. **AMARIT คอลลาเจน 30 แคปซูล** (1 ชิ้น)
