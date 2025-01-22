@@ -151,7 +151,7 @@ Fill Shipping Address
 
     # wait id='conf-dif-addr' visible
     # Scroll Element Into View    ${LOCATOR_BTN_SELECT_ADDR}
-    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_ADDR}    20s
+    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_ADDR}    10s
     Click Element    ${LOCATOR_BTN_SELECT_ADDR}
 
     # wait button continue payment visible and enabled
@@ -167,7 +167,7 @@ Pay with Cash at 7-Eleven
     Wait Until Element Is Visible    ${LOCATOR_PAYMENT_OPTION_TAB}    10s
     Click Element    ${LOCATOR_PAYMENT_OPTION_TAB}
     Product Details
-    # รายละเอียดการจัดส่ง
+    # Click Element    ${LOCATOR_BTN_ORDER}
     # Order Details
 
 Product Details

@@ -51,6 +51,8 @@ ${LOCATOR_PRODUCT_PRICE_ITEM_2}                         xpath=//*[@id="page"]/di
 ${LOCATOR_PRODUCT_PRICE_ITEM_3}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[4]/span[2]
 
 ${LOCATOR_TOTAL_PRICE}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[9]/div/div[2]/span[1]
+
+${LOCATOR_BTN_ORDER}                                    xpath=//*[@id="stepModel"]/div[1]/div[2]/footer/div/div/button
 #####################################################################################
 
 # Locator Order Summary
