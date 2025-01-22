@@ -18,6 +18,7 @@ ${LOCATOR_STORE_DETAIL}                                 xpath=//*[@id="store"]/d
 ${LOCATOR_INPUT_LOCATION_FIELD}                         xpath=/html/body/span/span/span[1]/input
 ${LOCATOR_BTN_CONTINUE_PAYMENT}                         id=continue-payment-btn
 ${LOCATOR_PAYMENT_OPTION_TAB}                           xpath=//*[@id="payment-options"]/div[3]/button
+${LOCATOR_BTN_LOGIN}                                    xpath=//*[@id="__next"]/div/div/div[2]/div[2]/div/div/div/div[6]/a[1]
 
 ${LOCATOR_PRODUCT_NAME_ITEM_1}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[2]/a
 ${LOCATOR_PRODUCT_NAME_ITEM_2}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[2]/a
@@ -129,15 +130,11 @@ Check Total Price
 Proceed to Payment
     # Click Element    ${LOCATOR_BTN_CONTINUE_PAYMENT}
     Execute JavaScript    document.querySelector("a.btn-proceed").click();
-
-    ################## temp logic ##################
     Wait Until Page Contains    สามารถเข้าใช้งานด้วยบัญชีเดียวกับ 7 App    10s
-    Login
-    ################## end temp ##################
 
-    Wait Until Page Contains    รายละเอียดการจัดส่งสินค้า
-    Wait Until Element Is Visible    ${LOCATOR_PHONE_NUMBER_INPUT}
-    Input Text    ${LOCATOR_PHONE_NUMBER_INPUT}    0895678912
+    # Login with the existing account to proceed payment
+    Login
+    Wait Until Page Contains    รายละเอียดการจัดส่งสินค้า    10s
 
     # continue payment
     # Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}
@@ -154,58 +151,6 @@ Enter Store Code
 
     # store detail
     Wait Until Element Is Visible    ${LOCATOR_STORE_DETAIL}    10s
-
-# Shipping Address
-#    [Arguments]
-#    # Locator Text Fields    -->    Data Test
-#    ...    ${locator_fname}    ${customer_fname}
-#    ...    ${locator_lname}    ${customer_lname}
-#    ...    ${locator_phone}    ${customer_phone}
-#    ...    ${locator_address_no}    ${customer_address_no}
-#    ...    ${locator_address_soi}    ${customer_address_soi}
-#    ...    ${locator_province}    ${customer_province}
-#    ...    ${locator_district}    ${customer_district}
-#    ...    ${locator_sub_district}    ${customer_sub_district}
-#    ...    ${customer_postal_code}
-
-#    Enter Shipping Address
-#    # Locator Text Fields    -->    Data Test
-#    ...    ${locator_fname}    ${customer_fname}
-#    ...    ${locator_lname}    ${customer_lname}
-#    ...    ${locator_phone}    ${customer_phone}
-#    ...    ${locator_address_no}    ${customer_address_no}
-#    ...    ${locator_address_soi}    ${customer_address_soi}
-#    ...    ${locator_province}    ${customer_province}
-#    ...    ${locator_district}    ${customer_district}
-#    ...    ${locator_sub_district}    ${customer_sub_district}
-#    ...    ${customer_postal_code}
-
-# Enter Shipping Address
-#    [Arguments]
-#    # Locator Text Fields    -->    Data Test
-#    ...    ${locator_fname}    ${customer_fname}
-#    ...    ${locator_lname}    ${customer_lname}
-#    ...    ${locator_phone}    ${customer_phone}
-#    ...    ${locator_address_no}    ${customer_address_no}
-#    ...    ${locator_address_soi}    ${customer_address_soi}
-#    ...    ${locator_province}    ${customer_province}
-#    ...    ${locator_district}    ${customer_district}
-#    ...    ${locator_sub_district}    ${customer_sub_district}
-#    ...    ${customer_postal_code}
-
-#    Input Text    ${locator_fname}    ${customer_fname}
-#    Input Text    ${locator_lname}    ${customer_lname}
-#    Input Text    ${locator_phone}    ${customer_phone}
-#    Input Text    ${locator_address_no}    ${customer_address_no}
-#    Input Text    ${locator_address_soi}    ${customer_address_soi}
-
-#    Select From List By Label    ${locator_province}    ${customer_province}
-#    Select From List By Label    ${locator_district}    ${customer_district}
-#    Select From List By Label    ${locator_sub_district}    ${customer_sub_district}
-
-#    # Check postal code
-#    ${postal_code}    Get Text    ${LOCATOR_CUSTOMER_ADDRESS_POSTAL_CODE}
-#    Should Be Equal As Strings    ${postal_code}    ${customer_postal_code}
 
 Fill Shipping Address
     [Arguments]
@@ -248,17 +193,17 @@ Fill Shipping Address
 
     # selected-location
     Scroll Element Into View    id=selected-location
-    Wait Until Element Is Visible    id=selected-location    timeout=10s
+    Wait Until Element Is Visible    id=selected-location    10s
     Click Element    id=selected-location
 
     # wait id='conf-dif-addr' visible
-    Wait Until Element Is Visible    id=conf-dif-addr    timeout=10s
-    Wait Until Element Is Enabled    id=conf-dif-addr    timeout=10s
+    Scroll Element Into View    id=conf-dif-addr
+    Wait Until Element Is Visible    id=conf-dif-addr    10s
     Click Element    id=conf-dif-addr
 
     # wait button continue payment visible and enabled
-    Wait Until Element Is Visible    ${LOCATOR_BTN_CONTINUE_PAYMENT}    timeout=10s
-    Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}    timeout=10s
+    Wait Until Element Is Visible    ${LOCATOR_BTN_CONTINUE_PAYMENT}    10s
+    Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}    10s
 
     # click continue payment
     # Click Element    ${LOCATOR_BTN_CONTINUE_PAYMENT}
@@ -270,7 +215,6 @@ Pay with Cash at 7-Eleven
     Click Element    ${LOCATOR_PAYMENT_OPTION_TAB}
     Product Details
     # รายละเอียดการจัดส่ง
-    Sleep    20s
     # Order Details
 
 Product Details
@@ -336,21 +280,6 @@ Earn All Member Points
     [Arguments]    ${xpath_TotalPrice}    ${Expected_TotalPrice}
     Element Text Should Be    ${xpath_TotalPrice}    ${Expected_TotalPrice}
 
-# รายละเอียดการจัดส่ง
-    # Element Should Contain    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/div    ภากร สร้อยคำ
-
-    # แก้ตรงนี้
-    # address
-    # Element Should Contain    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[1]/td    เบอร์โทรศัพท์ผู้รับสินค้า: 0895678912 เซเว่นอีเลฟเว่น #18527 สาขา PTTOR พระราม 4-พระโขนง เลขที่ ถ.พระรามที่4, 3767/1, แขวงพระโขนง เขตคลองเตย กรุงเทพฯ 10110
-    # ${actual_text}    Get Text    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[1]/td
-
-    # # ลบการขึ้นบรรทัดใหม่และช่องว่างส่วนเกิน
-    # ${actual_text}    Replace String    ${actual_text}    \n    "    # ลบการขึ้นบรรทัดใหม่
-    # ${actual_text}    Replace String    ${actual_text}    "    "    # ลบช่องว่างส่วนเกิน
-
-    # # ตรวจสอบว่า actual_text มีข้อความที่คาดหวัง
-    # Should Contain    ${actual_text}    เบอร์โทรศัพท์ผู้รับสินค้า: 0895678912 เซเว่นอีเลฟเว่น #18527 สาขา PTTOR พระราม 4-พระโขนง เลขที่ ถ.พระรามที่4, 3767/1, แขวงพระโขนง เขตคลองเตย กรุงเทพฯ 10110
-
 Order Details
     # หน้าบิลหลังกดสั่งซื้อ
     Wait Until Page Contains    ชำระด้วยบาร์โค้ดผ่าน
@@ -381,4 +310,4 @@ Login
     Wait Until Element Is Visible    name=email    10s
     Input Text    name=email    ${u}
     Input Password    name=password    ${p}
-    Click Element    //*[@id="__next"]/div/div/div[2]/div[2]/div/div/div/div[6]/a[1]
+    Click Element    ${LOCATOR_BTN_LOGIN}
