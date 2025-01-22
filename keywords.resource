@@ -1,54 +1,7 @@
 *** Settings ***
 Library     SeleniumLibrary
 Library     env_keywords.py
-Library     String
-
-
-*** Variables ***
-${URL}                                                  https://www.allonline.7eleven.co.th/
-${BROWSER}                                              chrome
-${LOCATOR_SEARCH}                                       name=q
-${LOCATOR_PRODUCT_ITEM}                                 xpath=//*[@id="page"]/div[2]/div[2]/div/div/div[2]/div/div/div/div/div/div[3]/div[1]/div/a[1]/div/img
-${LOCATOR_BTN_ADD_TO_CART}                              xpath=//*[@id="article-form"]/div[2]/div[2]/div[4]/div[1]/button
-${LOCATOR_PHONE_NUMBER_INPUT}                           id=second-phone-shipping
-${LOCATOR_STORE_FINDER}                                 xpath=//*[@id="storefinder-selector-group"]/div[2]/div
-${LOCATOR_STORE_NUMBER_INPUT}                           id=user-storenumber-input
-${LOCATOR_BTN_CHK_STORE_NUMBER}                         id=btn-check-storenumber
-${LOCATOR_STORE_DETAIL}                                 xpath=//*[@id="store"]/div[2]/div/div[4]/div[3]/div/div/div[2]/span/span
-${LOCATOR_INPUT_LOCATION_FIELD}                         xpath=/html/body/span/span/span[1]/input
-${LOCATOR_BTN_CONTINUE_PAYMENT}                         id=continue-payment-btn
-${LOCATOR_PAYMENT_OPTION_TAB}                           xpath=//*[@id="payment-options"]/div[3]/button
-${LOCATOR_BTN_LOGIN}                                    xpath=//*[@id="__next"]/div/div/div[2]/div[2]/div/div/div/div[6]/a[1]
-
-${LOCATOR_PRODUCT_NAME_ITEM_1}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[2]/a
-${LOCATOR_PRODUCT_NAME_ITEM_2}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[2]/a
-${LOCATOR_PRODUCT_NAME_ITEM_3}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[2]/a
-
-${LOCATOR_PRODUCT_QTY_ITEM_1}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[5]/div/div/input
-${LOCATOR_PRODUCT_QTY_ITEM_2}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[5]/div/div/input
-${LOCATOR_PRODUCT_QTY_ITEM_3}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[5]/div/div/input
-
-${LOCATOR_PRODUCT_PRICE_ITEM_1}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[4]/span[2]
-${LOCATOR_PRODUCT_PRICE_ITEM_2}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[4]/span[2]
-${LOCATOR_PRODUCT_PRICE_ITEM_3}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[4]/span[2]
-
-${LOCATOR_TOTAL_PRICE}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[9]/div/div[2]/span[1]
-
-# Shipping Address Locators
-${LOCATOR_NEW_ADDRESS}                                  xpath=//*[@id="address"]/div[1]/div[2]
-${LOCATOR_CUSTOMER_NAME}                                id=new-address-name
-${LOCATOR_CUSTOMER_LASTNAME}                            id=new-address-lastname
-${LOCATOR_CUSTOMER_PHONE_NUMBER}                        id=new-address-mobile
-${LOCATOR_CUSTOMER_ADDRESS_NUMBER}                      id=new-address-addrno
-${LOCATOR_CUSTOMER_ADDRESS_SOI}                         id=new-address-soi
-${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_PROVINCE}           id=select2-new-address-province-container
-${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_DISTRICT}           id=select2-new-address-district-container
-${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_SUB_DISTRICT}       id=select2-new-address-sub-district-container
-${LOCATOR_CUSTOMER_ADDRESS_POSTAL_CODE}                 id=new-address-postal-code
-
-${LOCATOR_CUSTOMER_PROVINCE}                            id=new-address-province
-${LOCATOR_CUSTOMER_DISTRICT}                            id=new-address-district
-${LOCATOR_CUSTOMER_SUB_DISTRICT}                        id=new-address-sub-district
+Resource    variables.resource
 
 
 *** Keywords ***
@@ -83,7 +36,7 @@ Select Product
     Click Button    ${LOCATOR_BTN_ADD_TO_CART}
 
 Open Shopping Cart
-    Double Click Element    id=mini-basket
+    Double Click Element    ${LOCATOR_MINI_BASKET}
     Wait Until Page Contains    ตะกร้าของฉัน    10s
 
 Review and Checkout
@@ -164,8 +117,8 @@ Fill Shipping Address
     ...    ${sub_district}
     ...    ${postal_code}
 
-    # กดจัดส่งตามที่อยู่
-    Click Element    xpath=//*[@id="address-tabs"]/ul/li[2]/a
+    # Select Delivery to Address
+    Click Element    ${LOCATOR_ADDRESS_TAB}
     Wait Until Element Is Visible    ${LOCATOR_NEW_ADDRESS}
     Click Element    ${LOCATOR_NEW_ADDRESS}
 
@@ -192,14 +145,14 @@ Fill Shipping Address
     Press Enter
 
     # selected-location
-    Scroll Element Into View    id=selected-location
-    Wait Until Element Is Visible    id=selected-location    10s
-    Click Element    id=selected-location
+    Scroll Element Into View    ${LOCATOR_BTN_SELECT_LOCATION}
+    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_LOCATION}    10s
+    Click Element    ${LOCATOR_BTN_SELECT_LOCATION}
 
     # wait id='conf-dif-addr' visible
-    Scroll Element Into View    id=conf-dif-addr
-    Wait Until Element Is Visible    id=conf-dif-addr    10s
-    Click Element    id=conf-dif-addr
+    # Scroll Element Into View    ${LOCATOR_BTN_SELECT_ADDR}
+    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_ADDR}    20s
+    Click Element    ${LOCATOR_BTN_SELECT_ADDR}
 
     # wait button continue payment visible and enabled
     Wait Until Element Is Visible    ${LOCATOR_BTN_CONTINUE_PAYMENT}    10s
@@ -218,44 +171,44 @@ Pay with Cash at 7-Eleven
     # Order Details
 
 Product Details
+    Order Summary    # Locator    -->    Expected Product (Name, Quantity, Price)
+    ...    ${LOCATOR_CHK_PRODUCT_NAME_ITEM_1}
+    ...    ${PRODUCT_ITEM_1}
+    ...    ${LOCATOR_CHK_PRODUCT_QTY_ITEM_1}
+    ...    ${PRODUCT_QTY}
+    ...    ${LOCATOR_CHK_PRODUCT_PRICE_ITEM_1}
+    ...    ${PRODUCT_PRICE_ITEM_1}
     Order Summary
-    ...    AMARIT คอลลาเจน 30 แคปซูล
-    ...    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[3]/td[2]
-    ...    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[3]/td[3]
-    ...    1
-    ...    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[3]/td[4]
-    ...    ฿ 149
+    ...    ${LOCATOR_CHK_PRODUCT_NAME_ITEM_2}
+    ...    ${PRODUCT_ITEM_2}
+    ...    ${LOCATOR_CHK_PRODUCT_QTY_ITEM_2}
+    ...    ${PRODUCT_QTY}
+    ...    ${LOCATOR_CHK_PRODUCT_PRICE_ITEM_2}
+    ...    ${PRODUCT_PRICE_ITEM_2}
     Order Summary
-    ...    แอคเน่-เอด ลิควิด 100 มล.
-    ...    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[6]/td[2]
-    ...    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[6]/td[3]
-    ...    1
-    ...    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[6]/td[4]
-    ...    ฿ 169
-    Order Summary
-    ...    มาลี น้ำส้มแมนดาริน 100% 1,000 มล.
-    ...    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[9]/td[2]
-    ...    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[9]/td[3]
-    ...    1
-    ...    xpath=//*[@id="stepModel"]/div[1]/div[2]/div[2]/table/tbody[1]/tr[9]/td[4]
-    ...    ฿ 149
+    ...    ${LOCATOR_CHK_PRODUCT_NAME_ITEM_3}
+    ...    ${PRODUCT_ITEM_3}
+    ...    ${LOCATOR_CHK_PRODUCT_QTY_ITEM_3}
+    ...    ${PRODUCT_QTY}
+    ...    ${LOCATOR_CHK_PRODUCT_PRICE_ITEM_3}
+    ...    ${PRODUCT_PRICE_ITEM_3}
     Total Price
-    ...    xpath=//*[@id="js-invoice-details-tbody"]/tr[1]/td[2]/b
-    ...    ฿ 467
+    ...    ${LOCATOR_CHK_TOTAL_PRICE}
+    ...    ${TOTAL_PRICE}
     Shipping Fee
-    ...    xpath=//*[@id="js-invoice-details-tbody"]/tr[2]/td[2]/b
-    ...    ฿ 50
+    ...    ${LOCATOR_CHK_SHIPPING_FEE}
+    ...    ${SHIPPING_FEE}
     Net Total
-    ...    id=totalAmount
-    ...    ฿ 517
+    ...    ${LOCATOR_CHK_NET_TOTAL}
+    ...    ${NET_TOTAL}
     Earn All Member Points
-    ...    xpath=//*[@id="js-invoice-details-tbody"]/tr[17]/td[2]/b
-    ...    138
+    ...    ${LOCATOR_CHK_ALL_MEMBER_POINTS}
+    ...    ${ALL_MEMBER_POINTS}
 
 Order Summary
     [Arguments]
-    ...    ${Product_Name}
     ...    ${xpath_Name}
+    ...    ${Product_Name}
     ...    ${xpath_Quantity}
     ...    ${Quantity_Expected}
     ...    ${xpath_Price}
@@ -265,20 +218,36 @@ Order Summary
     Element Text Should Be    ${xpath_Price}    ${Price_Expected}
 
 Total Price
-    [Arguments]    ${xpath_TotalPrice}    ${Expected_TotalPrice}
-    Element Text Should Be    ${xpath_TotalPrice}    ${Expected_TotalPrice}
+    [Arguments]
+    ...    ${xpath_TotalPrice}
+    ...    ${Expected_TotalPrice}
+    Element Text Should Be
+    ...    ${xpath_TotalPrice}
+    ...    ${Expected_TotalPrice}
 
 Shipping Fee
-    [Arguments]    ${xpath_TotalPrice}    ${Expected_TotalPrice}
-    Element Text Should Be    ${xpath_TotalPrice}    ${Expected_TotalPrice}
+    [Arguments]
+    ...    ${xpath_TotalPrice}
+    ...    ${Expected_TotalPrice}
+    Element Text Should Be
+    ...    ${xpath_TotalPrice}
+    ...    ${Expected_TotalPrice}
 
 Net Total
-    [Arguments]    ${xpath_TotalPrice}    ${Expected_TotalPrice}
-    Element Text Should Be    ${xpath_TotalPrice}    ${Expected_TotalPrice}
+    [Arguments]
+    ...    ${xpath_TotalPrice}
+    ...    ${Expected_TotalPrice}
+    Element Text Should Be
+    ...    ${xpath_TotalPrice}
+    ...    ${Expected_TotalPrice}
 
 Earn All Member Points
-    [Arguments]    ${xpath_TotalPrice}    ${Expected_TotalPrice}
-    Element Text Should Be    ${xpath_TotalPrice}    ${Expected_TotalPrice}
+    [Arguments]
+    ...    ${xpath_TotalPrice}
+    ...    ${Expected_TotalPrice}
+    Element Text Should Be
+    ...    ${xpath_TotalPrice}
+    ...    ${Expected_TotalPrice}
 
 Order Details
     # หน้าบิลหลังกดสั่งซื้อ
