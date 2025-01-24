@@ -1,5 +1,7 @@
+# Created By: Pakorn Soikham
+
 test_with_chrome:
-	robot workshop_group3_pakorn_soikham.robot
+	robot pakorn_soikham_allonline_workshop_group3.robot
 
 test_with_headlesschrome:
-	robot -v BROWSER:headlesschrome workshop_group3_pakorn_soikham.robot
+	robot -v BROWSER:headlesschrome pakorn_soikham_allonline_workshop_group3.robot
