@@ -83,6 +83,14 @@ This script is used to test ordering products on the website **[AllOnline 7Eleve
 
 ### ⚙️ **Environment Configuration**
 
+🤖 Install the necessary packages as follows:
+
+```env
+pip install robotframework
+pip install robotframework-seleniumlibrary
+pip install python-dotenv
+```
+
 Create a `.env` file and add your **AllOnline account credentials** in the following format:
 
 ```env
