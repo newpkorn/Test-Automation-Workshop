@@ -145,12 +145,12 @@ Fill Shipping Address
     Press Enter
 
     # selected-location
-    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_LOCATION}    10s
+    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_LOCATION}    20s
     Scroll Element Into View    ${LOCATOR_BTN_SELECT_LOCATION}
     Click Element    ${LOCATOR_BTN_SELECT_LOCATION}
 
     # wait id='conf-dif-addr' visible
-    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_ADDR}    60s
+    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_ADDR}    30s
     Scroll Element Into View    ${LOCATOR_BTN_SELECT_ADDR}
     Click Element    ${LOCATOR_BTN_SELECT_ADDR}
 
@@ -166,9 +166,17 @@ Pay with Cash at 7-Eleven
     Wait Until Page Contains    วิธีการชำระเงิน
     Wait Until Element Is Visible    ${LOCATOR_PAYMENT_OPTION_TAB}    10s
     Click Element    ${LOCATOR_PAYMENT_OPTION_TAB}
+    Wait Until Element Is Visible    ${LOCATOR_PAYMENT_CASE_INFO}
+
     Product Details
+
     # Click Element    ${LOCATOR_BTN_ORDER}
-    # Order Details
+    Execute Javascript    document.querySelector(".alert-cookie-gdpr-allonline").style.display = "none";
+    Sleep    2s
+    Click Element    ${LOCATOR_BTN_ORDER}
+
+    Log To Console    message=Navigate to order details page...
+    Order Details
 
 Product Details
     Order Summary    # Locator    -->    Expected Product (Name, Quantity, Price)
@@ -250,28 +258,110 @@ Earn All Member Points
     ...    ${Expected_TotalPrice}
 
 Order Details
-    # หน้าบิลหลังกดสั่งซื้อ
-    Wait Until Page Contains    ชำระด้วยบาร์โค้ดผ่าน
-    # ปุ่มปิด
-    Click Element    xpath=////*[@id="csModalContent"]/div[3]/div[3]/span
-    # Element Text Should Be    xpath=//*[@id="csModalContent"]/div[3]/div[2]/div[2]/div/div/span[2]    A437365905
-    # Element Should Contain    id=csTransDateBar    15/01/2568
+    # order billing page
+
+    # order number
+    Wait Until Element Is Visible    ${LOCATOR_CONTENT_BARCODE}    20s
+    Wait Until Element Is Visible    ${LOCATOR_GET_ORDER_NUMBER}    20s
+    ${order_number}    Get Text    ${LOCATOR_GET_ORDER_NUMBER}
+    Log    message=Order Number: ${order_number}
+
+    # order date
+    ${order_date}    Get Text    ${LOCATOR_GET_ORDER_DATE}
+    Log    message=Order Date: ${order_date}
+
+    Sleep    2s
+    Execute Javascript
+    ...    window.scrollTo(0, document.evaluate('//*[@class="csCloseModal"]//i[@class="icon-times-circle"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.getBoundingClientRect().top - 100);
+    Wait Until Element Is Visible    ${LOCATOR_BTN_CLOSE_BILLING_POPUP}    10s
+    Click Element    ${LOCATOR_BTN_CLOSE_BILLING_POPUP}
+
     Wait Until Page Contains    การสั่งซื้อสำเร็จ! ขอบคุณที่ไว้วางใจในสินค้าและบริการจากเรา
 
-    # <a class="e-Tax-detail-url" href="/account/order-history/">ประวัติการสั่งซื้อ</a>
-    Click Element    xpath=//*[@id="page"]/div[2]/div[2]/div[4]/div[4]/a
+    # go to order history
+    Click Element    ${LOCATOR_ORDER_HISTORY}
     Wait Until Page Contains    ประวัติการสั่งซื้อ
-    Page Should Contain    A437365905
 
-    # <a href="/account/order-history/order-details/?orderId=55230878&amp;checkSum=f7ff7ebb8a14641ab36eae4c31c9fb49">รายละเอียดการสั่งซื้อ</a>
-    # คลิกที่เลขออเดอร์
-    Click Element    xpath=//*[@id="my-orders-accordion"]/div[1]/a/div/div[1]
+    # checking the current page contains order number
+    Page Should Contain    ${order_number}
+    Log    message=Order Number: ${order_number}
+
+    # check order number
+    Element Text Should Be    ${LOCATOR_ORDER_NUMBER}    ${order_number}
+
+    # click order detail
+    Wait Until Element Is Visible    ${LOCATOR_ORDER_NUMBER}    10s
+    Click Element    ${LOCATOR_ORDER_NUMBER}
+
     Wait Until Page Contains    รายละเอียดการสั่งซื้อ
 
-    # <span class="address ellipsis-full "> ชญานิศา วงศ์ภักดี    เบอร์โทรติดต่อ : 0895678912    <br> 45/89    พระโขนง, คลองตัน คลองเตย กรุงเทพมหานคร 10110<br> </span>
-    Element Should Contain
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[3]/div[1]/div[1]/div/span
-    ...    ชญานิศา วงศ์ภักดี เบอร์โทรติดต่อ : 0895678912 45/89 พระโขนง, คลองตัน คลองเตย กรุงเทพมหานคร 10110
+    Element Text Should Be
+    ...    ${LOCATOR_CHK_ORDER_NUMBER}
+    ...    หมายเลขสั่งซื้อ #${order_number}
+
+    # check order date
+    Element Text Should Be
+    ...    ${LOCATOR_CHK_ORDER_DATE}
+    ...    วันที่สั่งซื้อ ${order_date}
+
+    # check payment method
+    Element Text Should Be
+    ...    ${LOCATOR_PAYMENT_TYPE}
+    ...    ชำระเงินสด ที่ร้านเซเว่นอีเลฟเว่น (7-11)
+
+    # check delivery address
+    Wait Until Element Is Visible    ${LOCATOR_DELIVERY_ADDR}
+    ${address_text}    Get Text    ${LOCATOR_DELIVERY_ADDR}
+    Log    ${address_text}
+    Should Contain    ${address_text}    ชญานิศา วงศ์ภักดี
+    Should Contain    ${address_text}    เบอร์โทรติดต่อ : 0895678912
+    Should Contain    ${address_text}    45/89 พระโขนง, คลองเตย คลองเตย กรุงเทพมหานคร 10110
+
+# check product details
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[1]/div[1]/div[1]/span[2]
+    ...    ${TOTAL_PRICE}
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[1]/div[1]/div[2]/span[2]
+    ...    ${SHIPPING_FEE}
+
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[5]/div/div/div/div[2]/div[4]
+    ...    ${NET_TOTAL}
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[1]/div[2]/div[2]/span
+    ...    ${ALL_MEMBER_POINTS}
+
+    # Order Details
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[4]/div[2]/div[2]
+    ...    ${PRODUCT_ITEM_1}
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[4]/div[3]/div[1]/span[2]
+    ...    ${PRODUCT_QTY}
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[4]/div[3]/div[2]/span[2]
+    ...    ${PRODUCT_PRICE_ITEM_1}
+
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[7]/div[2]/div[2]
+    ...    ${PRODUCT_ITEM_2}
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[7]/div[3]/div[1]/span[2]
+    ...    ${PRODUCT_QTY}
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[7]/div[3]/div[2]/span[2]
+    ...    ${PRODUCT_PRICE_ITEM_2}
+
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[2]/div[2]
+    ...    ${PRODUCT_ITEM_3}
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[1]/span[2]
+    ...    ${PRODUCT_QTY}
+    Element Text Should Be
+    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[2]/span[2]
+    ...    ${PRODUCT_PRICE_ITEM_3}
 
 Login
     ${u}    Get Env Variable    username

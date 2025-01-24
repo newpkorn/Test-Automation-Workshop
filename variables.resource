@@ -9,16 +9,16 @@ ${PRODUCT_ITEM_2}                                       แอคเน่-เ�
 ${PRODUCT_ITEM_3}                                       มาลี น้ำส้มแมนดาริน 100% 1,000 มล.
 
 ${PRODUCT_PRICE_ITEM_1}                                 ฿ 119
-${PRODUCT_PRICE_ITEM_2}                                 ฿ 169
+${PRODUCT_PRICE_ITEM_2}                                 ฿ 225
 ${PRODUCT_PRICE_ITEM_3}                                 ฿ 149
 
 ${PRODUCT_QTY}                                          1
 
-${TOTAL_PRICE}                                          ฿ 437
+${TOTAL_PRICE}                                          ฿ 493
 ${SHIPPING_FEE}                                         ฿ 50
-${NET_TOTAL}                                            ฿ 487
+${NET_TOTAL}                                            ฿ 543
 
-${ALL_MEMBER_POINTS}                                    129
+${ALL_MEMBER_POINTS}                                    147
 #####################################################################################
 
 # Element Locators
@@ -36,6 +36,7 @@ ${LOCATOR_BTN_SELECT_LOCATION}                          id=selected-location
 ${LOCATOR_BTN_SELECT_ADDR}                              id=conf-dif-addr
 ${LOCATOR_BTN_CONTINUE_PAYMENT}                         id=continue-payment-btn
 ${LOCATOR_PAYMENT_OPTION_TAB}                           xpath=//*[@id="payment-options"]/div[3]/button
+${LOCATOR_PAYMENT_CASE_INFO}                            xpath=//*[@id="COUNTERSERVICE_CASH-tab"]/div/div
 ${LOCATOR_BTN_LOGIN}                                    xpath=//*[@id="__next"]/div/div/div[2]/div[2]/div/div/div/div[6]/a[1]
 
 ${LOCATOR_PRODUCT_NAME_ITEM_1}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[2]/a
@@ -52,7 +53,23 @@ ${LOCATOR_PRODUCT_PRICE_ITEM_3}                         xpath=//*[@id="page"]/di
 
 ${LOCATOR_TOTAL_PRICE}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[9]/div/div[2]/span[1]
 
-${LOCATOR_BTN_ORDER}                                    xpath=//*[@id="stepModel"]/div[1]/div[2]/footer/div/div/button
+${LOCATOR_BTN_ORDER}                                    css=button.btn-proceed
+
+${LOCATOR_BTN_CLOSE_BILLING_POPUP}                      xpath=//*[@class="csCloseModal"]//i[@class="icon-times-circle"]
+${LOCATOR_CONTENT_BARCODE}                              xpath=//div[@id='contentBarcode']
+${LOCATOR_GET_ORDER_NUMBER}                             id=csInvBar
+${LOCATOR_GET_ORDER_DATE}                               id=csTransDateBar
+
+${LOCATOR_ORDER_HISTORY}                                xpath=//*[@id="page"]/div[2]/div[2]/div[4]/div[4]/a
+${LOCATOR_ORDER_NUMBER}                                 //*[@id="my-orders-accordion"]/div[1]/a/div/div[1]/span
+${LOCATOR_ORDER_DATE}                                   xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[2]/div[3]/b
+
+${LOCATOR_CHK_ORDER_NUMBER}                             xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[2]/div[1]/b
+${LOCATOR_CHK_ORDER_DATE}                               xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[2]/div[3]/b
+
+${LOCATOR_PAYMENT_TYPE}                                 xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[5]/div/div/div/div[2]/div[2]
+${LOCATOR_DELIVERY_ADDR}                                xpath=//div[@class='address']//span[contains(@class, 'address ellipsis-full')]
+
 #####################################################################################
 
 # Order Summary Locator
@@ -89,3 +106,6 @@ ${LOCATOR_CUSTOMER_ADDRESS_POSTAL_CODE}                 id=new-address-postal-co
 ${LOCATOR_CUSTOMER_PROVINCE}                            id=new-address-province
 ${LOCATOR_CUSTOMER_DISTRICT}                            id=new-address-district
 ${LOCATOR_CUSTOMER_SUB_DISTRICT}                        id=new-address-sub-district
+
+${order_number}                                         A458952605
+${order_date}                                           24/01/2568
