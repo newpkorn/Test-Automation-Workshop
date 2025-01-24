@@ -1,6 +1,8 @@
 *** Settings ***
 Library     SeleniumLibrary
 Library     env_keywords.py
+Library     String
+Library     Collections
 Resource    variables.resource
 
 
@@ -31,7 +33,9 @@ Review Search Results
 
 Select Product
     [Arguments]    ${Product}
+    Wait Until Element Is Visible    ${LOCATOR_PRODUCT_ITEM}    10s
     Click Element    ${LOCATOR_PRODUCT_ITEM}
+
     Wait Until Page Contains    ${Product}
     Click Button    ${LOCATOR_BTN_ADD_TO_CART}
 
@@ -300,9 +304,14 @@ Order Details
     ...    หมายเลขสั่งซื้อ #${order_number}
 
     # check order date
+    ${order_date_list}    Split String    ${order_date}    ${SPACE}
+    ${order_date_only}    Get From List    ${order_date_list}    0
+    ${day}    ${month}    ${year}    Split String    ${order_date_only}    /
+    ${year_th}    Evaluate    ${year} + 543
+    ${order_date_th}    Set Variable    ${day}/${month}/${year_th}
     Element Text Should Be
     ...    ${LOCATOR_CHK_ORDER_DATE}
-    ...    วันที่สั่งซื้อ ${order_date}
+    ...    วันที่สั่งซื้อ ${order_date_th}
 
     # check payment method
     Element Text Should Be
@@ -313,54 +322,57 @@ Order Details
     Wait Until Element Is Visible    ${LOCATOR_DELIVERY_ADDR}
     ${address_text}    Get Text    ${LOCATOR_DELIVERY_ADDR}
     Log    ${address_text}
-    Should Contain    ${address_text}    ชญานิศา วงศ์ภักดี
-    Should Contain    ${address_text}    เบอร์โทรติดต่อ : 0895678912
-    Should Contain    ${address_text}    45/89 พระโขนง, คลองเตย คลองเตย กรุงเทพมหานคร 10110
+    ${cleaned_address_text}    Replace String    ${address_text}    \n    ${SPACE}
 
-# check product details
+    # ckeck delivery address
+    Should Contain
+    ...    ${cleaned_address_text}
+    ...    ชญานิศา วงศ์ภักดี เบอร์โทรติดต่อ : 0895678912 45/89 พระโขนง, คลองเตย คลองเตย กรุงเทพมหานคร 10110
+
+    # check product details
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[1]/div[1]/div[1]/span[2]
+    ...    ${XPATH_TOTAL_PRICE}
     ...    ${TOTAL_PRICE}
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[1]/div[1]/div[2]/span[2]
+    ...    ${XPATH_SHIPPING_FEE}
     ...    ${SHIPPING_FEE}
 
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[5]/div/div/div/div[2]/div[4]
+    ...    ${XPATH_NET_TOTAL}
     ...    ${NET_TOTAL}
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[1]/div[2]/div[2]/span
+    ...    ${XPATH_ALL_MEMBER_POINTS}
     ...    ${ALL_MEMBER_POINTS}
 
-    # Order Details
+    # check order details
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[4]/div[2]/div[2]
+    ...    ${XPATH_PRODUCT_ITEM_1}
     ...    ${PRODUCT_ITEM_1}
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[4]/div[3]/div[1]/span[2]
+    ...    ${XPATH_PRODUCT_QTY_1}
     ...    ${PRODUCT_QTY}
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[4]/div[3]/div[2]/span[2]
+    ...    ${XPATH_PRODUCT_PRICE_1}
     ...    ${PRODUCT_PRICE_ITEM_1}
 
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[7]/div[2]/div[2]
+    ...    ${XPATH_PRODUCT_ITEM_2}
     ...    ${PRODUCT_ITEM_2}
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[7]/div[3]/div[1]/span[2]
+    ...    ${XPATH_PRODUCT_QTY_2}
     ...    ${PRODUCT_QTY}
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[7]/div[3]/div[2]/span[2]
+    ...    ${XPATH_PRODUCT_PRICE_2}
     ...    ${PRODUCT_PRICE_ITEM_2}
 
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[2]/div[2]
+    ...    ${XPATH_PRODUCT_ITEM_3}
     ...    ${PRODUCT_ITEM_3}
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[1]/span[2]
+    ...    ${XPATH_PRODUCT_QTY_3}
     ...    ${PRODUCT_QTY}
     Element Text Should Be
-    ...    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[2]/span[2]
+    ...    ${XPATH_PRODUCT_PRICE_3}
     ...    ${PRODUCT_PRICE_ITEM_3}
 
 Login

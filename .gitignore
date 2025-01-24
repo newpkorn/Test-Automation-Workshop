@@ -4,9 +4,10 @@
 *.png
 
 # Ignore specific files
-log.html
-report.html
-output.xml
+# log.html
+# report.html
+# output.xml
+test.robot
 
 .DS_Store
 

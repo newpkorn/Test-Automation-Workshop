@@ -41,17 +41,17 @@ ${LOCATOR_BTN_LOGIN}                                    xpath=//*[@id="__next"]/
 
 ${LOCATOR_PRODUCT_NAME_ITEM_1}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[2]/a
 ${LOCATOR_PRODUCT_NAME_ITEM_2}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[2]/a
-${LOCATOR_PRODUCT_NAME_ITEM_3}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[2]/a
+${LOCATOR_PRODUCT_NAME_ITEM_3}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[12]/div[1]/div[2]/a
 
 ${LOCATOR_PRODUCT_QTY_ITEM_1}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[5]/div/div/input
 ${LOCATOR_PRODUCT_QTY_ITEM_2}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[5]/div/div/input
-${LOCATOR_PRODUCT_QTY_ITEM_3}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[5]/div/div/input
+${LOCATOR_PRODUCT_QTY_ITEM_3}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[12]/div[1]/div[5]/div/div/input
 
 ${LOCATOR_PRODUCT_PRICE_ITEM_1}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[4]/span[2]
 ${LOCATOR_PRODUCT_PRICE_ITEM_2}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[4]/span[2]
-${LOCATOR_PRODUCT_PRICE_ITEM_3}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[1]/div[4]/span[2]
+${LOCATOR_PRODUCT_PRICE_ITEM_3}                         //*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[12]/div[1]/div[4]/span[2]
 
-${LOCATOR_TOTAL_PRICE}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[7]/div[9]/div/div[2]/span[1]
+${LOCATOR_TOTAL_PRICE}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[12]/div[9]/div/div[2]/span[1]
 
 ${LOCATOR_BTN_ORDER}                                    css=button.btn-proceed
 
@@ -61,10 +61,9 @@ ${LOCATOR_GET_ORDER_NUMBER}                             id=csInvBar
 ${LOCATOR_GET_ORDER_DATE}                               id=csTransDateBar
 
 ${LOCATOR_ORDER_HISTORY}                                xpath=//*[@id="page"]/div[2]/div[2]/div[4]/div[4]/a
-${LOCATOR_ORDER_NUMBER}                                 //*[@id="my-orders-accordion"]/div[1]/a/div/div[1]/span
-${LOCATOR_ORDER_DATE}                                   xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[2]/div[3]/b
+${LOCATOR_ORDER_NUMBER}                                 xpath=//*[@id="my-orders-accordion"]/div[1]/a/div/div[1]/span
 
-${LOCATOR_CHK_ORDER_NUMBER}                             xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[2]/div[1]/b
+${LOCATOR_CHK_ORDER_NUMBER}                             xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[2]/div[1]
 ${LOCATOR_CHK_ORDER_DATE}                               xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[2]/div[3]/b
 
 ${LOCATOR_PAYMENT_TYPE}                                 xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[5]/div/div/div/div[2]/div[2]
@@ -106,6 +105,26 @@ ${LOCATOR_CUSTOMER_ADDRESS_POSTAL_CODE}                 id=new-address-postal-co
 ${LOCATOR_CUSTOMER_PROVINCE}                            id=new-address-province
 ${LOCATOR_CUSTOMER_DISTRICT}                            id=new-address-district
 ${LOCATOR_CUSTOMER_SUB_DISTRICT}                        id=new-address-sub-district
+#####################################################################################
 
-${order_number}                                         A458952605
-${order_date}                                           24/01/2568
+# Check Product Details
+${XPATH_TOTAL_PRICE}                                    xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[1]/div[1]/div[1]/span[2]
+${XPATH_SHIPPING_FEE}                                   xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[1]/div[1]/div[2]/span[2]
+${XPATH_NET_TOTAL}                                      xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[5]/div/div/div/div[2]/div[4]
+${XPATH_ALL_MEMBER_POINTS}                              xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[1]/div[2]/div[2]/span
+
+# Order Details
+${XPATH_PRODUCT_ITEM_1}                                 xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[4]/div[2]/div[2]
+${XPATH_PRODUCT_QTY_1}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[4]/div[3]/div[1]/span[2]
+${XPATH_PRODUCT_PRICE_1}                                xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[4]/div[3]/div[2]/span[2]
+
+${XPATH_PRODUCT_ITEM_2}                                 xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[7]/div[2]/div[2]
+${XPATH_PRODUCT_QTY_2}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[7]/div[3]/div[1]/span[2]
+${XPATH_PRODUCT_PRICE_2}                                xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[7]/div[3]/div[2]/span[2]
+
+${XPATH_PRODUCT_ITEM_3}                                 xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[2]/div[2]
+${XPATH_PRODUCT_QTY_3}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[1]/span[2]
+${XPATH_PRODUCT_PRICE_3}                                xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[2]/span[2]
+
+${order_number_test}                                    A461574705
+${order_date_test}                                      24/01/2025 22:41
