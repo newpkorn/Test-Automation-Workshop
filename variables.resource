@@ -1,3 +1,8 @@
+*** Comments ***
+Deverlop By: Pakorn Soikham
+Date: 2021-09-26
+
+
 *** Variables ***
 ${URL}                                                  https://www.allonline.7eleven.co.th/
 ${BROWSER}                                              chrome
