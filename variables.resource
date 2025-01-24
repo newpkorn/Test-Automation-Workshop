@@ -130,6 +130,3 @@ ${XPATH_PRODUCT_PRICE_2}                                xpath=//*[@id="page"]/di
 ${XPATH_PRODUCT_ITEM_3}                                 xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[2]/div[2]
 ${XPATH_PRODUCT_QTY_3}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[1]/span[2]
 ${XPATH_PRODUCT_PRICE_3}                                xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[2]/span[2]
-
-${order_number_test}                                    A461574705
-${order_date_test}                                      24/01/2025 22:41
