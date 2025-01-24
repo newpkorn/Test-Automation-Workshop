@@ -393,13 +393,13 @@ Without any arguments.</msg>
 </kw>
 <kw name="Login" owner="keywords">
 <kw name="Get Env Variable" owner="env_keywords">
-<msg time="2025-01-24T23:39:50.147568" level="INFO">${u} = vrnew@hotmail.com</msg>
+<msg time="2025-01-24T23:39:50.147568" level="INFO">${u} = your_email</msg>
 <var>${u}</var>
 <arg>username</arg>
 <status status="PASS" start="2025-01-24T23:39:50.140153" elapsed="0.007479"/>
 </kw>
 <kw name="Get Env Variable" owner="env_keywords">
-<msg time="2025-01-24T23:39:50.148579" level="INFO">${p} = New@190388S</msg>
+<msg time="2025-01-24T23:39:50.148579" level="INFO">${p} = your_password</msg>
 <var>${p}</var>
 <arg>password</arg>
 <status status="PASS" start="2025-01-24T23:39:50.147825" elapsed="0.000825"/>
@@ -411,7 +411,7 @@ Without any arguments.</msg>
 <status status="PASS" start="2025-01-24T23:39:50.148853" elapsed="0.022243"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-01-24T23:39:50.171509" level="INFO">Typing text 'vrnew@hotmail.com' into text field 'name=email'.</msg>
+<msg time="2025-01-24T23:39:50.171509" level="INFO">Typing text 'your_email' into text field 'name=email'.</msg>
 <arg>name=email</arg>
 <arg>${u}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
