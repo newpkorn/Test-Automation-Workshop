@@ -29,13 +29,13 @@ ${ALL_MEMBER_POINTS}                                    147
 # Element Locators
 ${LOCATOR_SEARCH}                                       name=q
 ${LOCATOR_PRODUCT_ITEM}                                 xpath=//*[@id="page"]/div[2]/div[2]/div/div/div[2]/div/div/div/div/div/div[3]/div[1]/div/a[1]/div/img
-${LOCATOR_BTN_ADD_TO_CART}                              xpath=//*[@id="article-form"]/div[2]/div[2]/div[4]/div[1]/button
+${LOCATOR_BTN_ADD_TO_CART}                              css=button[class='btn btn-addtocart btn-green gradient broad add-to-cart add-to-cart-cls-mobile']
 ${LOCATOR_MINI_BASKET}                                  id=mini-basket
-${LOCATOR_STORE_FINDER}                                 xpath=//*[@id="storefinder-selector-group"]/div[2]/div
+${LOCATOR_STORE_FINDER}                                 css=button[data-target='#store-number-tab']
 ${LOCATOR_STORE_NUMBER_INPUT}                           id=user-storenumber-input
 ${LOCATOR_BTN_CHK_STORE_NUMBER}                         id=btn-check-storenumber
-${LOCATOR_STORE_DETAIL}                                 xpath=//*[@id="store"]/div[2]/div/div[4]/div[3]/div/div/div[2]/span/span
-${LOCATOR_ADDRESS_TAB}                                  xpath=//*[@id="address-tabs"]/ul/li[2]/a
+${LOCATOR_STORE_DETAIL}                                 css=span.address-7_11_store-detail-header
+${LOCATOR_ADDRESS_TAB}                                  css=a.tab-address
 ${LOCATOR_INPUT_LOCATION_FIELD}                         xpath=/html/body/span/span/span[1]/input
 ${LOCATOR_BTN_SELECT_LOCATION}                          id=selected-location
 ${LOCATOR_BTN_SELECT_ADDR}                              id=conf-dif-addr
@@ -44,19 +44,19 @@ ${LOCATOR_PAYMENT_OPTION_TAB}                           xpath=//*[@id="payment-o
 ${LOCATOR_PAYMENT_CASE_INFO}                            xpath=//*[@id="COUNTERSERVICE_CASH-tab"]/div/div
 ${LOCATOR_BTN_LOGIN}                                    xpath=//*[@id="__next"]/div/div/div[2]/div[2]/div/div/div/div[6]/a[1]
 
-${LOCATOR_PRODUCT_NAME_ITEM_1}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[2]/a
-${LOCATOR_PRODUCT_NAME_ITEM_2}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[2]/a
-${LOCATOR_PRODUCT_NAME_ITEM_3}                          xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[12]/div[1]/div[2]/a
+${LOCATOR_PRODUCT_NAME_ITEM_1}                          xpath=//a[contains(text(), '${PRODUCT_ITEM_1}')]
+${LOCATOR_PRODUCT_NAME_ITEM_2}                          xpath=//a[contains(text(), '${PRODUCT_ITEM_2}')]
+${LOCATOR_PRODUCT_NAME_ITEM_3}                          xpath=//a[contains(text(), '${PRODUCT_ITEM_3}')]
 
-${LOCATOR_PRODUCT_QTY_ITEM_1}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[5]/div/div/input
-${LOCATOR_PRODUCT_QTY_ITEM_2}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[5]/div/div/input
-${LOCATOR_PRODUCT_QTY_ITEM_3}                           xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[12]/div[1]/div[5]/div/div/input
+${LOCATOR_PRODUCT_QTY_ITEM_1}                           css=input[value='${PRODUCT_QTY}']
+${LOCATOR_PRODUCT_QTY_ITEM_2}                           css=input[value='${PRODUCT_QTY}']
+${LOCATOR_PRODUCT_QTY_ITEM_3}                           css=input[value='${PRODUCT_QTY}']
 
-${LOCATOR_PRODUCT_PRICE_ITEM_1}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[1]/div[4]/span[2]
-${LOCATOR_PRODUCT_PRICE_ITEM_2}                         xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[7]/div[1]/div[4]/span[2]
-${LOCATOR_PRODUCT_PRICE_ITEM_3}                         //*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[12]/div[1]/div[4]/span[2]
+${LOCATOR_PRODUCT_PRICE_ITEM_1}                         xpath=//span[@class='highlight' and contains(text(), '${PRODUCT_PRICE_ITEM_1}')]
+${LOCATOR_PRODUCT_PRICE_ITEM_2}                         xpath=//span[@class='highlight' and contains(text(), '${PRODUCT_PRICE_ITEM_2}')]
+${LOCATOR_PRODUCT_PRICE_ITEM_3}                         xpath=//span[@class='highlight' and contains(text(), '${PRODUCT_PRICE_ITEM_3}')]
 
-${LOCATOR_TOTAL_PRICE}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div/div[3]/div[12]/div[9]/div/div[2]/span[1]
+${LOCATOR_TOTAL_PRICE}                                  xpath=//span[@class='Ao' and contains(text(), '${TOTAL_PRICE}')]
 
 ${LOCATOR_BTN_ORDER}                                    css=button.btn-proceed
 
@@ -96,7 +96,7 @@ ${LOCATOR_CHK_ALL_MEMBER_POINTS}                        xpath=//*[@id="js-invoic
 #####################################################################################
 
 # Shipping Address Locators
-${LOCATOR_NEW_ADDRESS}                                  xpath=//*[@id="address"]/div[1]/div[2]
+${LOCATOR_NEW_ADDRESS}                                  xpath=//div[@class='new-address'][contains(text(), 'เพิ่มที่อยู่ใหม่')]
 ${LOCATOR_CUSTOMER_NAME}                                id=new-address-name
 ${LOCATOR_CUSTOMER_LASTNAME}                            id=new-address-lastname
 ${LOCATOR_CUSTOMER_PHONE_NUMBER}                        id=new-address-mobile
@@ -130,3 +130,15 @@ ${XPATH_PRODUCT_PRICE_2}                                xpath=//*[@id="page"]/di
 ${XPATH_PRODUCT_ITEM_3}                                 xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[2]/div[2]
 ${XPATH_PRODUCT_QTY_3}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[1]/span[2]
 ${XPATH_PRODUCT_PRICE_3}                                xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[2]/span[2]
+
+# ใช้ single quotes แทน double quotes
+# ${LOCATOR_PRODUCT_ITEM}    xpath=//a[.//img[@alt*='{Search Keyword}']]//div/img
+
+# *** Keywords ***
+# # # ฟังก์ชันนี้จะถูกเรียกใช้เพื่อแทนที่ค่าของตัวแปรใน XPath
+# Set Locator For Product
+#    [Arguments]    ${Search Keyword}
+#    # แทนที่เครื่องหมายคำพูดใน `${Search Keyword}`
+#    ${escaped_keyword}    Evaluate    "'${Search Keyword}'.replace('\"', '\\\"')"
+#    ${locator}    Set Variable    //a[.//img[@alt*="${escaped_keyword}"]]//div/img
+#    Set Test Variable    ${LOCATOR_PRODUCT_ITEM}    ${locator}

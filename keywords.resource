@@ -24,6 +24,14 @@ Search and Select Products
     Review Search Results    ${Search Results}
     Select Product    ${Search Keyword}
 
+# Search and Select Products
+#    [Arguments]    ${Search Keyword}    ${Search Results}
+#    Search Product    ${Search Keyword}
+#    Press Enter
+#    Review Search Results    ${Search Results}
+#    Set Locator For Product    ${Search Keyword}
+#    Select Product    ${Search Keyword}
+
 Search Product
     [Arguments]    ${Search Keyword}
     Wait Until Element Is Visible    ${LOCATOR_SEARCH}
@@ -105,7 +113,10 @@ Proceed to Payment
 
 Enter Store Code
     [Arguments]    ${store_id}
-    Click Element    ${LOCATOR_STORE_FINDER}
+    Wait Until Element Is Visible    ${LOCATOR_STORE_FINDER}    10s
+    # Click Element    ${LOCATOR_STORE_FINDER}
+    Execute JavaScript    document.querySelector('button[data-target="#store-number-tab"]').click()
+
     # store id
     Wait Until Element Is Visible    ${LOCATOR_STORE_NUMBER_INPUT}
     Input Text    ${LOCATOR_STORE_NUMBER_INPUT}    ${store_id}
