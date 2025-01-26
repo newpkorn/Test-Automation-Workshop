@@ -31,7 +31,7 @@ ${LOCATOR_SEARCH}                                       name=q
 ${LOCATOR_PRODUCT_ITEM}                                 xpath=//*[@id="page"]/div[2]/div[2]/div/div/div[2]/div/div/div/div/div/div[3]/div[1]/div/a[1]/div/img
 ${LOCATOR_BTN_ADD_TO_CART}                              css=button[class='btn btn-addtocart btn-green gradient broad add-to-cart add-to-cart-cls-mobile']
 ${LOCATOR_MINI_BASKET}                                  id=mini-basket
-${LOCATOR_STORE_FINDER}                                 css=button[data-target='#store-number-tab']
+${LOCATOR_STORE_FINDER}                                 xpath=//*[@id="storefinder-selector-group"]/div[2]/div
 ${LOCATOR_STORE_NUMBER_INPUT}                           id=user-storenumber-input
 ${LOCATOR_BTN_CHK_STORE_NUMBER}                         id=btn-check-storenumber
 ${LOCATOR_STORE_DETAIL}                                 css=span.address-7_11_store-detail-header
@@ -96,7 +96,7 @@ ${LOCATOR_CHK_ALL_MEMBER_POINTS}                        xpath=//*[@id="js-invoic
 #####################################################################################
 
 # Shipping Address Locators
-${LOCATOR_NEW_ADDRESS}                                  xpath=//div[@class='new-address'][contains(text(), 'เพิ่มที่อยู่ใหม่')]
+${LOCATOR_NEW_ADDRESS}                                  xpath=//*[@id="address"]/div[1]/div[2]
 ${LOCATOR_CUSTOMER_NAME}                                id=new-address-name
 ${LOCATOR_CUSTOMER_LASTNAME}                            id=new-address-lastname
 ${LOCATOR_CUSTOMER_PHONE_NUMBER}                        id=new-address-mobile
@@ -130,15 +130,3 @@ ${XPATH_PRODUCT_PRICE_2}                                xpath=//*[@id="page"]/di
 ${XPATH_PRODUCT_ITEM_3}                                 xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[2]/div[2]
 ${XPATH_PRODUCT_QTY_3}                                  xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[1]/span[2]
 ${XPATH_PRODUCT_PRICE_3}                                xpath=//*[@id="page"]/div[2]/div[2]/div[2]/div[6]/div/div[10]/div[3]/div[2]/span[2]
-
-# ใช้ single quotes แทน double quotes
-# ${LOCATOR_PRODUCT_ITEM}    xpath=//a[.//img[@alt*='{Search Keyword}']]//div/img
-
-# *** Keywords ***
-# # # ฟังก์ชันนี้จะถูกเรียกใช้เพื่อแทนที่ค่าของตัวแปรใน XPath
-# Set Locator For Product
-#    [Arguments]    ${Search Keyword}
-#    # แทนที่เครื่องหมายคำพูดใน `${Search Keyword}`
-#    ${escaped_keyword}    Evaluate    "'${Search Keyword}'.replace('\"', '\\\"')"
-#    ${locator}    Set Variable    //a[.//img[@alt*="${escaped_keyword}"]]//div/img
-#    Set Test Variable    ${LOCATOR_PRODUCT_ITEM}    ${locator}
