@@ -24,14 +24,6 @@ Search and Select Products
     Review Search Results    ${Search Results}
     Select Product    ${Search Keyword}
 
-# Search and Select Products
-#    [Arguments]    ${Search Keyword}    ${Search Results}
-#    Search Product    ${Search Keyword}
-#    Press Enter
-#    Review Search Results    ${Search Results}
-#    Set Locator For Product    ${Search Keyword}
-#    Select Product    ${Search Keyword}
-
 Search Product
     [Arguments]    ${Search Keyword}
     Wait Until Element Is Visible    ${LOCATOR_SEARCH}
@@ -45,11 +37,15 @@ Review Search Results
     Wait Until Page Contains    ${expected_keyword}    10s
 
 Select Product
-    [Arguments]    ${Product}
-    Wait Until Element Is Visible    ${LOCATOR_PRODUCT_ITEM}    10s
-    Click Element    ${LOCATOR_PRODUCT_ITEM}
+    [Arguments]    ${Product_Name}
+    ${DYNAMIC_LOCATOR}    Set Variable    css=a[title*='${Product_Name}']
+    Wait Until Element Is Visible    ${LOCATOR_COOKIE_POPUP}
+    Scroll Element Into View    ${DYNAMIC_LOCATOR}
+    Sleep    1s
+    Click Element    ${DYNAMIC_LOCATOR}
 
-    Wait Until Page Contains    ${Product}
+    # check if the product is selected.
+    Wait Until Page Contains    ${Product_Name}    timeout=5s
     Click Button    ${LOCATOR_BTN_ADD_TO_CART}
 
 Open Shopping Cart
@@ -98,7 +94,6 @@ Check Total Price
     ...    ${Expected_TotalPrice}
 
 Proceed to Payment
-    # Click Element    ${LOCATOR_BTN_CONTINUE_PAYMENT}
     Execute JavaScript    document.querySelector("a.btn-proceed").click();
     Wait Until Page Contains    สามารถเข้าใช้งานด้วยบัญชีเดียวกับ 7 App    10s
 
@@ -107,7 +102,6 @@ Proceed to Payment
     Wait Until Page Contains    รายละเอียดการจัดส่งสินค้า    10s
 
     # continue payment
-    # Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}
     Execute JavaScript    document.querySelector("button#continue-payment-btn").click();
     Wait Until Page Contains    วิธีการชำระเงิน
 
@@ -150,27 +144,27 @@ Fill Shipping Address
     Input Text    ${LOCATOR_CUSTOMER_ADDRESS_SOI}    ${soi}
 
     Click Element    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_PROVINCE}
-    # Select From List By Label    ${LOCATOR_CUSTOMER_PROVINCE}    ${province}
-    Input Text    ${LOCATOR_INPUT_LOCATION_FIELD}    ${province}
-    Press Enter
+    Wait Until Element Is Visible    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_PROVINCE_RESULTS}
+    Click Element    css=[id$='-${province}']
 
     Click Element    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_DISTRICT}
-    # Select From List By Label    ${LOCATOR_CUSTOMER_DISTRICT}    ${district}
-    Input Text    ${LOCATOR_INPUT_LOCATION_FIELD}    ${district}
-    Press Enter
+    Wait Until Element Is Visible    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_DISTRICT_RESULTS}
+    Click Element    css=[id$='-${district}']
+
+    Execute JavaScript    document.querySelector('div[class*="alert-cookie"]').style.display = 'none';
+    Wait Until Element Is Not Visible    xpath=//div[contains(@class, 'alert-cookie-gdpr-allonline__content')]
 
     Click Element    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_SUB_DISTRICT}
-    # Select From List By Label    ${LOCATOR_CUSTOMER_SUB_DISTRICT}    ${sub_district}
-    Input Text    ${LOCATOR_INPUT_LOCATION_FIELD}    ${sub_district}
-    Press Enter
+    Wait Until Element Is Visible    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_SUB_DISTRICT_RESULTS}
+    Click Element    css=[id$='-${sub_district}']
 
     # selected-location
-    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_LOCATION}    20s
+    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_LOCATION}    10s
     Scroll Element Into View    ${LOCATOR_BTN_SELECT_LOCATION}
     Click Element    ${LOCATOR_BTN_SELECT_LOCATION}
 
     # wait id='conf-dif-addr' visible
-    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_ADDR}    30s
+    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_ADDR}    10s
     Scroll Element Into View    ${LOCATOR_BTN_SELECT_ADDR}
     Click Element    ${LOCATOR_BTN_SELECT_ADDR}
 
@@ -179,7 +173,6 @@ Fill Shipping Address
     Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}    10s
 
     # click continue payment
-    # Click Element    ${LOCATOR_BTN_CONTINUE_PAYMENT}
     Execute JavaScript    document.getElementById("continue-payment-btn").click()
 
 Pay with Cash at 7-Eleven
@@ -196,24 +189,24 @@ Pay with Cash at 7-Eleven
     Click Element    ${LOCATOR_BTN_ORDER}
 
     Log To Console    message=Navigate to order details page...
-    Order Details
+    Order Summary
 
 Product Details
-    Order Summary    # Locator    -->    Expected Product (Name, Quantity, Price)
+    Order Detail    # Locator    -->    Expected Product (Name, Quantity, Price)
     ...    ${LOCATOR_CHK_PRODUCT_NAME_ITEM_1}
     ...    ${PRODUCT_ITEM_1}
     ...    ${LOCATOR_CHK_PRODUCT_QTY_ITEM_1}
     ...    ${PRODUCT_QTY}
     ...    ${LOCATOR_CHK_PRODUCT_PRICE_ITEM_1}
     ...    ${PRODUCT_PRICE_ITEM_1}
-    Order Summary
+    Order Detail
     ...    ${LOCATOR_CHK_PRODUCT_NAME_ITEM_2}
     ...    ${PRODUCT_ITEM_2}
     ...    ${LOCATOR_CHK_PRODUCT_QTY_ITEM_2}
     ...    ${PRODUCT_QTY}
     ...    ${LOCATOR_CHK_PRODUCT_PRICE_ITEM_2}
     ...    ${PRODUCT_PRICE_ITEM_2}
-    Order Summary
+    Order Detail
     ...    ${LOCATOR_CHK_PRODUCT_NAME_ITEM_3}
     ...    ${PRODUCT_ITEM_3}
     ...    ${LOCATOR_CHK_PRODUCT_QTY_ITEM_3}
@@ -233,7 +226,7 @@ Product Details
     ...    ${LOCATOR_CHK_ALL_MEMBER_POINTS}
     ...    ${ALL_MEMBER_POINTS}
 
-Order Summary
+Order Detail
     [Arguments]
     ...    ${xpath_Name}
     ...    ${Product_Name}
@@ -277,12 +270,14 @@ Earn All Member Points
     ...    ${xpath_TotalPrice}
     ...    ${Expected_TotalPrice}
 
-Order Details
+Order Summary
     # order billing page
-
-    # order number
-    Wait Until Element Is Visible    ${LOCATOR_CONTENT_BARCODE}    20s
-    Wait Until Element Is Visible    ${LOCATOR_GET_ORDER_NUMBER}    20s
+    # get order number from billing pop up
+    Wait Until Element Is Visible    ${LOCATOR_MODAL_BILLING}    10s
+    Wait Until Element Is Visible    ${LOCATOR_CONTENT_BARCODE}    10s
+    Wait Until Page Contains    เลขที่ใบแจ้งสินค้า
+    Wait Until Element Is Visible    ${LOCATOR_GET_ORDER_NUMBER}    10s
+    Sleep    2s
     ${order_number}    Get Text    ${LOCATOR_GET_ORDER_NUMBER}
     Log    message=Order Number: ${order_number}
 
@@ -290,7 +285,6 @@ Order Details
     ${order_date}    Get Text    ${LOCATOR_GET_ORDER_DATE}
     Log    message=Order Date: ${order_date}
 
-    Sleep    2s
     Execute Javascript
     ...    window.scrollTo(0, document.evaluate('//*[@class="csCloseModal"]//i[@class="icon-times-circle"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.getBoundingClientRect().top - 100);
     Wait Until Element Is Visible    ${LOCATOR_BTN_CLOSE_BILLING_POPUP}    10s
@@ -299,7 +293,9 @@ Order Details
     Wait Until Page Contains    การสั่งซื้อสำเร็จ! ขอบคุณที่ไว้วางใจในสินค้าและบริการจากเรา
 
     # go to order history
-    Click Element    ${LOCATOR_ORDER_HISTORY}
+    Wait Until Element Is Visible    ${LOCATOR_ORDER_HISTORY}
+    # Click Element    ${LOCATOR_ORDER_HISTORY}
+    Execute Javascript    document.querySelector('a.e-Tax-detail-url').click();
     Wait Until Page Contains    ประวัติการสั่งซื้อ
 
     # checking the current page contains order number
