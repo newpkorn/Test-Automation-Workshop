@@ -188,8 +188,27 @@ Pay with Cash at 7-Eleven
     Sleep    2s
     Click Element    ${LOCATOR_BTN_ORDER}
 
+    # order billing page
+    # get order number from billing pop up
+    Wait Until Page Contains    กำลังชำระเงิน ชำระเงินสด ที่ร้านเซเว่นอีเลฟเว่น (7-11)
+
+    Wait Until Element Is Visible    ${LOCATOR_CONTENT_BARCODE}    10s
+    Wait Until Element Is Visible    ${LOCATOR_GET_ORDER_NUMBER}    10s
+
+    Sleep    2s
+    ${order_number}    Get Text    ${LOCATOR_GET_ORDER_NUMBER}
+    Log    message=Order Number: ${order_number}
+
+    # order date
+    ${order_date}    Get Text    ${LOCATOR_GET_ORDER_DATE}
+    Log    message=Order Date: ${order_date}
+
+    Sleep    2s
+    Wait Until Element Is Visible    ${LOCATOR_BTN_CLOSE_BILLING_POPUP}    10s
+    Click Element    ${LOCATOR_BTN_CLOSE_BILLING_POPUP}
+
     Log To Console    message=Navigate to order details page...
-    Order Summary
+    Order Summary    ${order_number}    ${order_date}
 
 Product Details
     Order Detail    # Locator    -->    Expected Product (Name, Quantity, Price)
@@ -271,25 +290,7 @@ Earn All Member Points
     ...    ${Expected_TotalPrice}
 
 Order Summary
-    # order billing page
-    # get order number from billing pop up
-    Wait Until Element Is Visible    ${LOCATOR_MODAL_BILLING}    10s
-    Wait Until Element Is Visible    ${LOCATOR_CONTENT_BARCODE}    10s
-    Wait Until Page Contains    เลขที่ใบแจ้งสินค้า
-    Wait Until Element Is Visible    ${LOCATOR_GET_ORDER_NUMBER}    10s
-    Sleep    2s
-    ${order_number}    Get Text    ${LOCATOR_GET_ORDER_NUMBER}
-    Log    message=Order Number: ${order_number}
-
-    # order date
-    ${order_date}    Get Text    ${LOCATOR_GET_ORDER_DATE}
-    Log    message=Order Date: ${order_date}
-
-    Execute Javascript
-    ...    window.scrollTo(0, document.evaluate('//*[@class="csCloseModal"]//i[@class="icon-times-circle"]', document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue.getBoundingClientRect().top - 100);
-    Wait Until Element Is Visible    ${LOCATOR_BTN_CLOSE_BILLING_POPUP}    10s
-    Click Element    ${LOCATOR_BTN_CLOSE_BILLING_POPUP}
-
+    [Arguments]    ${order_number}    ${order_date}
     Wait Until Page Contains    การสั่งซื้อสำเร็จ! ขอบคุณที่ไว้วางใจในสินค้าและบริการจากเรา
 
     # go to order history
@@ -307,6 +308,8 @@ Order Summary
 
     # click order detail
     Wait Until Element Is Visible    ${LOCATOR_ORDER_NUMBER}    10s
+    Wait Until Element Is Enabled    ${LOCATOR_ORDER_NUMBER}    10s
+    # Execute Javascript    document.querySelector('span.order-number').click();
     Click Element    ${LOCATOR_ORDER_NUMBER}
 
     Wait Until Page Contains    รายละเอียดการสั่งซื้อ

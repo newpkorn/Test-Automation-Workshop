@@ -57,5 +57,3 @@ Successful Product Purchase
     ...    10110
 
     Pay with Cash at 7-Eleven
-
-    Order Summary
