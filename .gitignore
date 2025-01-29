@@ -17,3 +17,5 @@ test1.robot
 __pycache__/
 
 venv/
+
+.vscode/
