@@ -16,7 +16,6 @@ Perform To Login
     Login Wtih The Username And Password    ${username}    ${password}
 
 Open Login Page
-    # Click Element    ${LOCATER_BTN_LOGIN_PAGE}
     Wait Until Page Contains    ${CONTENT_LOGIN_PAGE}    10s
 
 Login Wtih The Username And Password

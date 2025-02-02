@@ -11,7 +11,7 @@ PASSWORD ?=
 
 # Default target
 .PHONY: all
-all: prepare-output run-parallel open-report
+run-tests-and_open-report: prepare-output run-parallel open-report
 
 # Run all tests
 .PHONY: run-tests
