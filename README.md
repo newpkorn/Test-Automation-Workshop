@@ -5,12 +5,11 @@ Date: 25-01-2025
 
 # 🛒 **Automated Test Script**
 
-# Automation Testing Project
-
 This project is designed to run automated tests using [Robot Framework](https://robotframework.org/) and [Pabot](https://github.com/mkorpela/pabot) for parallel test execution. It includes functionality to install dependencies, run tests, and clean up the output.
 
 ## Project Structure
 
+```
 /project
 ├── resources
 │ ├── authen
@@ -24,6 +23,7 @@ This project is designed to run automated tests using [Robot Framework](https://
 │ └── pabot_results
 ├── Makefile
 └── packages.txt
+```
 
 ---
 
