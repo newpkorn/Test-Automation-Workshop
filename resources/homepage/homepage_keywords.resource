@@ -110,8 +110,8 @@ Check Product Details
     Should Be Equal As Strings    ${quantity_text}    ${PRODUCT_QTY}
 
     ${price_text} =    Get Text    ${Price_Locator}
-    ${price_text} =    Replace String    ${price_text}    '฿'    ''    # ลบสัญลักษณ์ '฿'
-    ${price_text} =    Replace String    ${price_text}    ' '    ''    # ลบช่องว่างทั้งหมด
+    ${price_text} =    Replace String    ${price_text}    '฿'    ''    # remove '฿'
+    ${price_text} =    Replace String    ${price_text}    ' '    ''    # romove white space ' '
     Should Be Equal As Strings    ${price_text}    ${EXPECTED_PRODUCT_PRICE}
 
 Check Total Price
