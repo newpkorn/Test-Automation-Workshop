@@ -7,7 +7,7 @@ Date: 25-01-2025
 Library     SeleniumLibrary
 Library     String
 Resource    ./homepage_variables.resource
-Resource    ../resources/authen/login_keywords.resource
+Resource    ../authen/login_keywords.resource
 
 
 *** Keywords ***
