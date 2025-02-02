@@ -13,7 +13,7 @@ This project is designed to run automated tests using [Robot Framework](https://
 /project
 ├── resources
 │ ├── authen
-│ ├── commons
+│ ├── common
 │ ├── homepage
 │ ├── payment
 │ └── shipping
