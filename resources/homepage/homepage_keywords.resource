@@ -114,12 +114,6 @@ Check Product Details
     ${price_text} =    Replace String    ${price_text}    ' '    ''    # ลบช่องว่างทั้งหมด
     Should Be Equal As Strings    ${price_text}    ${EXPECTED_PRODUCT_PRICE}
 
-# Check Summary Details
-#    Element Text Should Be    ${LOCATOR_TOTAL_PRICE}    ${TOTAL_PRICE}
-#    Element Text Should Be    ${LOCATOR_SHIPPING_FEE}    ${SHIPPING_FEE}
-#    Element Text Should Be    ${LOCATOR_NET_TOTAL}    ${NET_TOTAL}
-#    Element Text Should Be    ${LOCATOR_ALL_MEMBER_POINTS}    ${ALL_MEMBER_POINTS}
-
 Check Total Price
     [Arguments]    ${Expected_TotalPrice}
     Element Text Should Be    ${LOCATOR_TOTAL_PRICE}    ${Expected_TotalPrice}
