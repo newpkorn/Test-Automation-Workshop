@@ -1,21 +1,10 @@
-.env
-
-# Ignore .png files
-*.png
-
-# Ignore specific files
-# log.html
-# report.html
-# output.xml
-test.robot
-test1.robot
-
-.DS_Store
-
-*.log
-
-__pycache__/
-
 venv/
+results/
 
-.vscode/
+output
+report.html
+output.xml
+log.html
+*.png
+.pabotsuitenames
+.DS_Store

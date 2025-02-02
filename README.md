@@ -5,7 +5,59 @@ Date: 25-01-2025
 
 # 🛒 **Automated Test Script**
 
-This script is used to test ordering products on the website **[AllOnline 7Eleven](https://www.allonline.7eleven.co.th/)**.
+# Automation Testing Project
+
+This project is designed to run automated tests using [Robot Framework](https://robotframework.org/) and [Pabot](https://github.com/mkorpela/pabot) for parallel test execution. It includes functionality to install dependencies, run tests, and clean up the output.
+
+## Project Structure
+
+/project
+├── resources
+│ ├── authen
+│ ├── commons
+│ ├── homepage
+│ ├── payment
+│ └── shipping
+├── tests
+│ └── TC-03.robot
+├── results
+│ └── pabot_results
+├── Makefile
+└── packages.txt
+
+---
+
+## Prerequisites
+
+Before running the tests, make sure you have the following installed:
+
+- [Python](https://www.python.org/) (version 3.6 or higher)
+- [Pip](https://pip.pypa.io/en/stable/)
+- [Robot Framework](https://robotframework.org/) (installed through `pip`)
+- [Pabot](https://github.com/mkorpela/pabot) (installed through `pip`)
+
+### ⚙️ **Environment Configuration**
+
+### Install Dependencies
+
+If you don't have the necessary packages installed, you can install them by running the following command:
+
+```bash
+make install-dependencies
+```
+
+### 🚀 **Run Test Script**
+
+You can run the test script using the following command:
+
+**For Chrome**:
+
+```env
+make run-tests USERNAME=myuser PASSWORD=mypassword
+```
+
+> **Note:**  
+> Please ensure that the version of ChromeDriver installed on your machine matches the version of the Chrome browser.
 
 ---
 
@@ -80,44 +132,3 @@ This script is used to test ordering products on the website **[AllOnline 7Eleve
 #### **รับ All member Point**: 123
 
 ---
-
-### ⚙️ **Environment Configuration**
-
-🤖 Install the necessary packages as follows:
-
-```env
-pip install robotframework
-pip install robotframework-seleniumlibrary
-pip install python-dotenv
-```
-
-Create a `.env` file and add your **AllOnline account credentials** in the following format:
-
-```env
-username=your_account@email.com
-password=your_password
-```
-
-Save the file after adding your email and password.
-
-> **Note:**  
-> Please use your **Existing AllOnline account credentials**. If you don't have an account, then register first.
-
-### 🚀 **Run Test Script**
-
-You can run the test script using the following command:
-
-**For Chrome**:
-
-```env
-make test_with_chrome
-```
-
-**For Headless Chrome (Not currently working due to 403 error)**:
-
-```env
-make test_with_headlesschrome
-```
-
-> **Note:**  
-> Please ensure that the version of ChromeDriver installed on your machine matches the version of the Chrome browser.

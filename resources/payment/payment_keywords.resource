@@ -1,180 +1,16 @@
 *** Comments ***
-# Deverlop By: Pakorn Soikham
-# Date: 25-01-2025
+Deverlop By: Pakorn Soikham
+Date: 25-01-2025
 
 
 *** Settings ***
 Library     SeleniumLibrary
-Library     env_keywords.py
-Library     String
 Library     Collections
-Resource    variables.resource
+Resource    ./payment_variables.resource
+Resource    ../homepage/homepage_keywords.resource
 
 
 *** Keywords ***
-Open Web Browser
-    # Set Selenium Speed    0.5
-    Open Browser    url=${URL}    browser=${BROWSER}
-    Maximize Browser Window
-
-Search and Select Products
-    [Arguments]    ${Search Keyword}    ${Search Results}
-    Search Product    ${Search Keyword}
-    Press Enter
-    Review Search Results    ${Search Results}
-    Select Product    ${Search Keyword}
-
-Search Product
-    [Arguments]    ${Search Keyword}
-    Wait Until Element Is Visible    ${LOCATOR_SEARCH}
-    Input Text    ${LOCATOR_SEARCH}    ${Search Keyword}
-
-Press Enter
-    Press Keys    None    RETURN
-
-Review Search Results
-    [Arguments]    ${expected_keyword}
-    Wait Until Page Contains    ${expected_keyword}    10s
-
-Select Product
-    [Arguments]    ${Product_Name}
-    ${DYNAMIC_LOCATOR}    Set Variable    css=a[title*='${Product_Name}']
-    Wait Until Element Is Visible    ${LOCATOR_COOKIE_POPUP}
-    Scroll Element Into View    ${DYNAMIC_LOCATOR}
-    Sleep    1s
-    Click Element    ${DYNAMIC_LOCATOR}
-
-    # check if the product is selected.
-    Wait Until Page Contains    ${Product_Name}    timeout=5s
-    Click Button    ${LOCATOR_BTN_ADD_TO_CART}
-
-Open Shopping Cart
-    Double Click Element    ${LOCATOR_MINI_BASKET}
-    Wait Until Page Contains    ตะกร้าของฉัน    10s
-
-Review and Checkout
-    [Arguments]
-    ...    ${xpath_Name}
-    ...    ${Product_Name}
-    ...    ${xpath_Quantity}
-    ...    ${Quantity_Expected}
-    ...    ${xpath_Price}
-    ...    ${Price_Expected}
-    Check Product Details
-    ...    ${xpath_Name}
-    ...    ${Product_Name}
-    ...    ${xpath_Quantity}
-    ...    ${Quantity_Expected}
-    ...    ${xpath_Price}
-    ...    ${Price_Expected}
-
-Check Product Details
-    [Arguments]
-    ...    ${xpath_Name}
-    ...    ${Product_Name}
-    ...    ${xpath_Quantity}
-    ...    ${Quantity_Expected}
-    ...    ${xpath_Price}
-    ...    ${Price_Expected}
-    Element Should Contain
-    ...    ${xpath_Name}    ${Product_Name}
-
-    Element Attribute Value Should Be
-    ...    ${xpath_Quantity}    value    ${Quantity_Expected}
-
-    Element Text Should Be
-    ...    ${xpath_Price}    ${Price_Expected}
-
-Check Total Price
-    [Arguments]
-    ...    ${xpath_TotalPrice}
-    ...    ${Expected_TotalPrice}
-    Element Text Should Be
-    ...    ${xpath_TotalPrice}
-    ...    ${Expected_TotalPrice}
-
-Proceed to Payment
-    Execute JavaScript    document.querySelector("a.btn-proceed").click();
-    Wait Until Page Contains    สามารถเข้าใช้งานด้วยบัญชีเดียวกับ 7 App    10s
-
-    # Login with the existing account to proceed payment
-    Login
-    Wait Until Page Contains    รายละเอียดการจัดส่งสินค้า    10s
-
-    # continue payment
-    Execute JavaScript    document.querySelector("button#continue-payment-btn").click();
-    Wait Until Page Contains    วิธีการชำระเงิน
-
-Enter Store Code
-    [Arguments]    ${store_id}
-    Wait Until Element Is Visible    ${LOCATOR_STORE_FINDER}    10s
-    # Click Element    ${LOCATOR_STORE_FINDER}
-    Execute JavaScript    document.querySelector('button[data-target="#store-number-tab"]').click()
-
-    # store id
-    Wait Until Element Is Visible    ${LOCATOR_STORE_NUMBER_INPUT}
-    Input Text    ${LOCATOR_STORE_NUMBER_INPUT}    ${store_id}
-    Click Element    ${LOCATOR_BTN_CHK_STORE_NUMBER}
-
-    # store detail
-    Wait Until Element Is Visible    ${LOCATOR_STORE_DETAIL}    10s
-
-Fill Shipping Address
-    [Arguments]
-    ...    ${name}
-    ...    ${lastname}
-    ...    ${phone}
-    ...    ${addr_no}
-    ...    ${soi}
-    ...    ${province}
-    ...    ${district}
-    ...    ${sub_district}
-    ...    ${postal_code}
-
-    # Select Delivery to Address
-    Click Element    ${LOCATOR_ADDRESS_TAB}
-    Wait Until Element Is Visible    ${LOCATOR_NEW_ADDRESS}
-    Click Element    ${LOCATOR_NEW_ADDRESS}
-
-    Wait Until Element Is Visible    ${LOCATOR_CUSTOMER_NAME}
-    Input Text    ${LOCATOR_CUSTOMER_NAME}    ${name}
-    Input Text    ${LOCATOR_CUSTOMER_LASTNAME}    ${lastname}
-    Input Text    ${LOCATOR_CUSTOMER_PHONE_NUMBER}    ${phone}
-    Input Text    ${LOCATOR_CUSTOMER_ADDRESS_NUMBER}    ${addr_no}
-    Input Text    ${LOCATOR_CUSTOMER_ADDRESS_SOI}    ${soi}
-
-    Click Element    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_PROVINCE}
-    Wait Until Element Is Visible    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_PROVINCE_RESULTS}
-    Click Element    css=[id$='-${province}']
-
-    Click Element    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_DISTRICT}
-    Wait Until Element Is Visible    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_DISTRICT_RESULTS}
-    Click Element    css=[id$='-${district}']
-
-    Execute JavaScript    document.querySelector('div[class*="alert-cookie"]').style.display = 'none';
-    Wait Until Element Is Not Visible    xpath=//div[contains(@class, 'alert-cookie-gdpr-allonline__content')]
-
-    Click Element    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_SUB_DISTRICT}
-    Wait Until Element Is Visible    ${LOCATOR_DROPDOWN_CUSTOMER_ADDRESS_SUB_DISTRICT_RESULTS}
-    Click Element    css=[id$='-${sub_district}']
-
-    # selected-location
-    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_LOCATION}    10s
-    Scroll Element Into View    ${LOCATOR_BTN_SELECT_LOCATION}
-    Click Element    ${LOCATOR_BTN_SELECT_LOCATION}
-
-    # wait id='conf-dif-addr' visible
-    Wait Until Element Is Visible    ${LOCATOR_BTN_SELECT_ADDR}    10s
-    Scroll Element Into View    ${LOCATOR_BTN_SELECT_ADDR}
-    Click Element    ${LOCATOR_BTN_SELECT_ADDR}
-
-    # wait button continue payment visible and enabled
-    Wait Until Element Is Visible    ${LOCATOR_BTN_CONTINUE_PAYMENT}    10s
-    Wait Until Element Is Enabled    ${LOCATOR_BTN_CONTINUE_PAYMENT}    10s
-
-    # click continue payment
-    Execute JavaScript    document.getElementById("continue-payment-btn").click()
-
 Pay with Cash at 7-Eleven
     Wait Until Page Contains    วิธีการชำระเงิน
     Wait Until Element Is Visible    ${LOCATOR_PAYMENT_OPTION_TAB}    10s
@@ -207,7 +43,6 @@ Pay with Cash at 7-Eleven
     Wait Until Element Is Visible    ${LOCATOR_BTN_CLOSE_BILLING_POPUP}    10s
     Click Element    ${LOCATOR_BTN_CLOSE_BILLING_POPUP}
 
-    Log To Console    message=Navigate to order details page...
     Order Summary    ${order_number}    ${order_date}
 
 Product Details
@@ -389,11 +224,3 @@ Order Summary
     Element Text Should Be
     ...    ${XPATH_PRODUCT_PRICE_3}
     ...    ${PRODUCT_PRICE_ITEM_3}
-
-Login
-    ${u}    Get Env Variable    username
-    ${p}    Get Env Variable    password
-    Wait Until Element Is Visible    name=email    10s
-    Input Text    name=email    ${u}
-    Input Password    name=password    ${p}
-    Click Element    ${LOCATOR_BTN_LOGIN}
